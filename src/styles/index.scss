@@ -1,0 +1,16 @@
+@use "variables";
+
+body {
+    color: var(--color);
+    background-color: variables.$bg;
+}
+
+h1 {
+    font-size: 60px;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
