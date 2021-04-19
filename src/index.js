@@ -1,6 +1,10 @@
-// import "normalize.css";
-import "./styles/index.scss";
+import "normalize.css";
+import "./css/main.ltr.css";
+import "./css/themes.css";
+import "./css/green.css";
 
-import { add } from "./js/helpers";
+import SiteState from './js/SiteState';
+import Site from './js/Site';
 
-console.log(add(1, 5));
+const siteState = new SiteState();
+new Site(siteState);

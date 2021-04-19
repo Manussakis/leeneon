@@ -1,5 +1,6 @@
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin"); 
 const path = require("path");
 
 module.exports = {
@@ -11,7 +12,7 @@ module.exports = {
     output: {
         filename: "[name].js",
         path: path.resolve(__dirname, "dist"),
-        assetModuleFilename: "assets/[name][ext]"
+        assetModuleFilename: "./assets/[name][ext]"
     },
     module: {
         rules: [
@@ -51,9 +52,25 @@ module.exports = {
         ]
     },
     plugins: [
+        new CopyWebpackPlugin({
+            patterns:[
+                {
+                    from: "src/browserconfig.xml",
+                },
+                {
+                    from: "src/site.webmanifest",
+                },
+            ]
+        }),
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
+            // Colocar mmultiploas arquivos: rtl-index.html...
+            filename: "index.html",
             template: "./src/index.html"
-        })
+        }),
+        new HtmlWebpackPlugin({
+            filename: "fullscreen.html",
+            template: "./src/fullscreen.html"
+        }),
     ],
 }

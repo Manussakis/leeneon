@@ -1,0 +1,238 @@
+.demo-engine {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  position: fixed;
+  top: 20%;
+  right: 0;
+  -webkit-transform: translateX(12.5rem);
+          transform: translateX(12.5rem);
+  z-index: 2;
+  direction: ltr;
+  -webkit-transition: -webkit-transform .2s ease-in-out;
+  transition: -webkit-transform .2s ease-in-out;
+  transition: transform .2s ease-in-out;
+  transition: transform .2s ease-in-out, -webkit-transform .2s ease-in-out;
+}
+
+.animation-off .demo-engine {
+  -webkit-transition-duration: 0.01s !important;
+          transition-duration: 0.01s !important;
+}
+
+.demo-engine__tab {
+  background-color: white;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0.25rem;
+  padding: 0.625rem;
+  z-index: 1;
+  -webkit-box-shadow: -2px 5px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: -2px 5px 10px rgba(0, 0, 0, 0.2);
+  -webkit-transition: -webkit-box-shadow 0.2s ease-in-out;
+  transition: -webkit-box-shadow 0.2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
+}
+
+.animation-off .demo-engine__tab {
+  -webkit-transition-duration: 0.01s !important;
+          transition-duration: 0.01s !important;
+}
+
+.demo-engine__tab svg {
+  fill: #192136;
+  -webkit-animation: spin;
+          animation: spin;
+  -webkit-animation-name: spin;
+          animation-name: spin;
+  -webkit-animation-duration: 4000ms;
+          animation-duration: 4000ms;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+
+.animation-off .demo-engine__tab svg {
+  -webkit-animation: none;
+          animation: none;
+}
+
+.demo-engine__overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: red;
+  display: none;
+}
+
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.demo-engine.open {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+
+.demo-engine.open .demo-engine__content {
+  -webkit-box-shadow: -5px 7px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: -5px 7px 10px rgba(0, 0, 0, 0.2);
+}
+
+.demo-engine.open .demo-engine__overlay {
+  display: block;
+}
+
+.demo-engine__content {
+  width: 12.375rem;
+  padding: 0.9375rem 1.5625rem 1.5625rem 1.5625rem;
+  background-color: white;
+  border-bottom-left-radius: 0.25rem;
+}
+
+.demo-engine__title {
+  color: #192136;
+  margin: 0 0.625rem 0 0;
+  text-align: left;
+}
+
+.demo-engine__colors {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0;
+}
+
+.demo-engine__color-btn {
+  width: 2.1875rem;
+  height: 2.1875rem;
+  border-radius: 2.1875rem;
+  background-color: red;
+  margin-bottom: 0.625rem;
+  -webkit-transition: -webkit-box-shadow 0.2s ease-in-out;
+  transition: -webkit-box-shadow 0.2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out;
+  transition: box-shadow 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
+}
+
+.animation-off .demo-engine__color-btn {
+  -webkit-transition-duration: 0.01s !important;
+          transition-duration: 0.01s !important;
+}
+
+.demo-engine__color-btn:hover, .demo-engine__color-btn--active {
+  -webkit-box-shadow: 0 0 0 3px #1D263D;
+          box-shadow: 0 0 0 3px #1D263D;
+}
+
+.demo-engine__color-btn:focus {
+  -webkit-box-shadow: 0 0 0 3px #1D263D, 0 0 0 5px #95A1BE;
+          box-shadow: 0 0 0 3px #1D263D, 0 0 0 5px #95A1BE;
+}
+
+.demo-engine__color-btn[data-color="blue"] {
+  background-color: #4D8BFF !important;
+}
+
+.demo-engine__color-btn[data-color="green"] {
+  background-color: #01d892 !important;
+}
+
+.demo-engine__color-btn[data-color="orange"] {
+  background-color: #ff6908 !important;
+}
+
+.demo-engine__color-btn[data-color="pink"] {
+  background-color: #ff64e8 !important;
+}
+
+.demo-engine__color-btn[data-color="purple"] {
+  background-color: #BF6CFE !important;
+}
+
+.demo-engine__color-btn[data-color="red"] {
+  background-color: #FF5266 !important;
+}
+
+.demo-engine__directions-list {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.demo-engine__directions-item {
+  width: 49%;
+}
+
+.demo-engine__directions-item a {
+  display: block;
+  padding: 0.625rem;
+  text-align: center;
+  border-radius: 0.25rem;
+  background-color: #ededed;
+  text-decoration: none;
+  color: #192136;
+  font-weight: 700;
+  text-transform: uppercase;
+  -webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
+}
+
+.animation-off .demo-engine__directions-item a {
+  -webkit-transition-duration: 0.01s !important;
+          transition-duration: 0.01s !important;
+}
+
+.demo-engine__directions-item a:hover {
+  color: #192136;
+  background-color: #dddddd;
+}
+
+.demo-engine__directions-item a.active {
+  background-color: #192136;
+  color: white;
+}

@@ -1,0 +1,119 @@
+.js-focus-visible a.focus-visible, .js-focus-visible
+button.focus-visible, .js-focus-visible
+[tabindex="0"].focus-visible {
+  -webkit-box-shadow: 0 0 0 0.3rem #80ecc9;
+          box-shadow: 0 0 0 0.3rem #80ecc9;
+  outline: 0;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  background: #01d892;
+}
+
+::selection {
+  background: #01d892;
+}
+
+.navigation__link {
+  background-image: linear-gradient(120deg, #01d892 0%, #01d892 100%);
+}
+
+.button--icon-hover-color:hover, .button--icon-hover-color:active {
+  background-color: #01d892 !important;
+}
+
+.button--icon-color {
+  color: #01d892;
+}
+
+.button--icon-color svg {
+  fill: #01d892;
+}
+
+.button--icon-color:hover, .button--icon-color:active {
+  background-color: #01d892;
+}
+
+.button--default {
+  background-color: #01d892;
+}
+
+.site-social-links__line {
+  background-color: #01d892;
+}
+
+.site-skip-link:focus {
+  -webkit-box-shadow: 0 0 0 0.3rem #d9f9ef;
+          box-shadow: 0 0 0 0.3rem #d9f9ef;
+}
+
+.line {
+  background-color: #01d892;
+}
+
+.dash-list__dash {
+  background-color: #01d892;
+}
+
+.hire-me__line {
+  background-color: #01d892;
+}
+
+.timeline__vertical-line {
+  background-color: #01d892;
+}
+
+.timeline__start-point {
+  border-color: #01d892;
+}
+
+.portfolio-item__imgs-carousel-nav svg {
+  fill: #01d892;
+}
+
+.portfolio__grid-link-infos {
+  background-color: rgba(1, 216, 146, 0.95);
+}
+
+.clients-testimonials__avatar {
+  background-color: rgba(1, 216, 146, 0.95);
+}
+
+.clients-testimonials__line {
+  background-color: #01d892;
+}
+
+.clients-testimonials.owl-theme .owl-dots .owl-dot.active span {
+  background-color: #01d892;
+}
+
+.blog-post__read-more {
+  color: #01d892;
+}
+
+.text-link {
+  background: -webkit-gradient(linear, left top, left bottom, from(#01d892), to(#01d892)) no-repeat left 100%/0 2px;
+  background: linear-gradient(#01d892, #01d892) no-repeat left 100%/0 2px;
+}
+
+.spinner-dual-ring--preloader > span {
+  border-color: #01d892 transparent #01d892 transparent !important;
+}
+
+.skill-bar__amount {
+  background-color: #01d892;
+}
+
+.contact-info__icon {
+  color: #01d892;
+}
+
+.service__icon svg {
+  fill: #01d892;
+}
+
+.form__field:focus {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.15), 0 0 0 4px #01d892 !important;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.15), 0 0 0 4px #01d892 !important;
+}
