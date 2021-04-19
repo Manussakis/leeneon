@@ -105,8 +105,8 @@ button.focus-visible, .js-focus-visible
   background-color: #ff6908;
 }
 
-.contact-info__icon {
-  color: #ff6908;
+.contact-info__icon svg {
+  fill: #ff6908;
 }
 
 .service__icon svg {

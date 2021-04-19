@@ -161,8 +161,8 @@ body.default-theme .portfolio__grid-link-category-item {
   color: #192136;
 }
 
-body.default-theme .portfolio__grid-link-infos-footer {
-  color: #192136;
+body.default-theme .portfolio__grid-link-infos-footer svg {
+  fill: #192136;
 }
 
 body.default-theme .portfolio-item__category {
@@ -529,8 +529,8 @@ body.dark-theme .portfolio__grid-link-category-item {
   color: #192136;
 }
 
-body.dark-theme .portfolio__grid-link-infos-footer {
-  color: #192136;
+body.dark-theme .portfolio__grid-link-infos-footer svg {
+  fill: #192136;
 }
 
 body.dark-theme .portfolio-item__category {
