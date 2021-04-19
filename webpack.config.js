@@ -64,7 +64,6 @@ module.exports = {
         }),
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
-            // Colocar mmultiploas arquivos: rtl-index.html...
             filename: "index.html",
             template: "./src/index.html"
         }),
