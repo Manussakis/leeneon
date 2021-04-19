@@ -5,14 +5,16 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const path = require("path");
 
 let mode = "development";
+let target = "web";
 
 if(process.env.NODE_ENV === 'production') {
     mode = "production";
+    target = "browserslist";
 }
 
 module.exports = {
     mode: mode,
-    target: "web",
+    target: target,
     entry: [
         "./src/index.js"
     ],
