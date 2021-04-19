@@ -6,10 +6,12 @@ const path = require("path");
 
 let mode = "development";
 let target = "web";
+let outputFilename = "[name].js"
 
 if(process.env.NODE_ENV === 'production') {
     mode = "production";
     target = "browserslist";
+    outputFilename = "[name].[contenthash].js"
 }
 
 module.exports = {
@@ -19,7 +21,7 @@ module.exports = {
         "./src/index.js"
     ],
     output: {
-        filename: "[name].js",
+        filename: outputFilename,
         path: path.resolve(__dirname, "dist"),
         assetModuleFilename: "./assets/[name][ext]"
     },
