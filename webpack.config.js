@@ -2,21 +2,38 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin"); 
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
+const { merge } = require('webpack-merge');
 const path = require("path");
 
-let mode = "development";
-let target = "web";
-let outputFilename = "[name].js"
+let mergeOptions = {
+    mode: "development",
+    target: "web",
+    devtool: "source-map"
+};
 
-if(process.env.NODE_ENV === 'production') {
-    mode = "production";
-    target = "browserslist";
+let outputFilename = "[name].js";
+
+if(process.env.NODE_ENV === 'production') {    
+    mergeOptions = {
+        mode: "production",
+        target: "browserslist",
+        optimization: {
+            minimize: true,
+            minimizer: [
+                new CssMinimizerPlugin(),
+                new TerserPlugin({
+                    test: /\.js(\?.*)?$/i,
+                })
+            ]
+        }
+    }
+
     outputFilename = "[name].[contenthash].js"
 }
 
-module.exports = {
-    mode: mode,
-    target: target,
+module.exports = merge(mergeOptions, {
     entry: [
         "./src/index.js"
     ],
@@ -84,4 +101,4 @@ module.exports = {
             template: "./src/fullscreen.html"
         }),
     ],
-}
+});

@@ -30,6 +30,7 @@
     "clean-webpack-plugin": "*",
     "copy-webpack-plugin": "^8.1.1",
     "css-loader": "^5.2.1",
+    "css-minimizer-webpack-plugin": "^2.0.0",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.4.1",
@@ -40,7 +41,8 @@
     "sass-loader": "^11.0.1",
     "webpack": "^5.33.2",
     "webpack-cli": "^4.6.0",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-dev-server": "^3.11.2",
+    "webpack-merge": "^5.7.3"
   },
   "dependencies": {
     "animejs": "^3.2.1",
