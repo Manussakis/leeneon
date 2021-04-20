@@ -10,12 +10,23 @@ const path = require("path");
 let mergeOptions = {
     mode: "development",
     target: "web",
-    devtool: "source-map"
+    devtool: "source-map",
+    plugins: [
+        new MiniCssExtractPlugin(),
+        new HtmlWebpackPlugin({
+            filename: "index.html",
+            template: "./src/index.html"
+        }),
+        new HtmlWebpackPlugin({
+            filename: "fullscreen.html",
+            template: "./src/fullscreen.html"
+        }),
+    ],
 };
 
 let outputFilename = "[name].js";
 
-if(process.env.NODE_ENV === 'production') {    
+if(process.env.NODE_ENV === 'production') {
     mergeOptions = {
         mode: "production",
         target: "browserslist",
@@ -27,7 +38,29 @@ if(process.env.NODE_ENV === 'production') {
                     test: /\.js(\?.*)?$/i,
                 })
             ]
-        }
+        },
+        plugins: [
+            new CleanWebpackPlugin(),
+            new CopyWebpackPlugin({
+                patterns:[
+                    {
+                        from: "src/browserconfig.xml",
+                    },
+                    {
+                        from: "src/site.webmanifest",
+                    },
+                ]
+            }),
+            new MiniCssExtractPlugin(),
+            new HtmlWebpackPlugin({
+                filename: "index.html",
+                template: "./src/index.html"
+            }),
+            new HtmlWebpackPlugin({
+                filename: "fullscreen.html",
+                template: "./src/fullscreen.html"
+            }),
+        ],
     }
 
     outputFilename = "[name].[contenthash].js"
@@ -70,26 +103,4 @@ module.exports = merge(mergeOptions, {
             }
         ]
     },
-    plugins: [
-        new CleanWebpackPlugin(),
-        new CopyWebpackPlugin({
-            patterns:[
-                {
-                    from: "src/browserconfig.xml",
-                },
-                {
-                    from: "src/site.webmanifest",
-                },
-            ]
-        }),
-        new MiniCssExtractPlugin(),
-        new HtmlWebpackPlugin({
-            filename: "index.html",
-            template: "./src/index.html"
-        }),
-        new HtmlWebpackPlugin({
-            filename: "fullscreen.html",
-            template: "./src/fullscreen.html"
-        }),
-    ],
 });
