@@ -1,7 +1,7 @@
 {
   "name": "leeneon",
   "version": "1.0.0",
-  "description": "",
+  "description": "Leeneon is a free portfolio template designed and developed to be accessible for as many users as possible.",
   "main": "./src/index.js",
   "scripts": {
     "start": "npx webpack serve",
@@ -16,9 +16,14 @@
     "> 0.5%",
     "IE >= 11"
   ],
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "a11y",
+    "dark-theme",
+    "portfolio-website",
+    "rtl"
+  ],
+  "author": "https://github.com/Manussakis/",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/Manussakis/leeneon/issues"
   },
