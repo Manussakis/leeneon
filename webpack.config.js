@@ -92,7 +92,7 @@ module.exports = merge(mergeOptions, {
                 ]
             },
             {
-                test: /\.(png|jpg|gif|svg)$/i,
+                test: /\.(png|jpe?g|gif|svg)$/i,
                 type: "asset/resource"
             },
             {
