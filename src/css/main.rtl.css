@@ -1209,6 +1209,7 @@ textarea.form__field {
 
 .home__introductory-text {
   max-width: 80%;
+  font-size: 1.3125rem;
 }
 
 .home__introductory-line {
@@ -2760,7 +2761,7 @@ body.rtl .portfolio-item__imgs-carousel-nav svg {
 }
 
 .site-subtitle {
-  font-size: 1.3em;
+  font-size: 1.3125rem;
   margin-bottom: 1.875rem;
   max-width: 31.25rem;
 }
