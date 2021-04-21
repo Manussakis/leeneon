@@ -1,11 +1,12 @@
 # Leeneon
-The free accessible portfolio template.
+
+The accessible free portfolio template.
 
 [![Leeneon](https://leeneon.com.br/external-images/github-cover.png)](https://leeneon.com.br/demos/)
 
 There are few accessible websites on internet and even less accessible websites with open source. However, open source projects heavily contribute to evolve the web development and the web accessibility can't be left out this evolution.
 
-Leeneon was born to contribute to the expansion of web accessibility. It is a free accessible portfolio template, ideal for resumes and for presenting creative works such as design, photography, illustration and so on.
+Leeneon was born to contribute to the expansion of web accessibility. It is a accessible free portfolio template, ideal for resumes and for presenting creative works such as design projects, photography, illustration and so on.
 
 If you desire to use Leeneon to publish your personal or comercial website, read the License section of this documentation before.
 
@@ -18,7 +19,7 @@ Leeneon has two templates:
 
 ## Why is Leeneon accessible?
 
-The [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) is the document that contains all the instructions for creating accessible content on the web. This document is maintained by W3C, the consortium that regulates web standards worldwide. WCAG was the guide for designing and developing Leeneon.
+The [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) is a document that contains all the instructions for creating accessible content on the web. This document is maintained by W3C, the consortium that regulates web standards worldwide. WCAG was the guide for designing and developing Leeneon.
 
 Check out the main features that make Leeneon an accessible website (or very close to it):
 
