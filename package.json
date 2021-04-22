@@ -4,8 +4,8 @@
   "description": "Leeneon is a free portfolio template designed and developed to be accessible for as many users as possible.",
   "main": "./src/index.js",
   "scripts": {
-    "start": "npx webpack serve",
-    "build": "NODE_ENV=production npx webpack"
+    "start": "npx webpack serve --config webpack.dev.js",
+    "build": "npx webpack --config webpack.prod.js"
   },
   "repository": {
     "type": "git",
