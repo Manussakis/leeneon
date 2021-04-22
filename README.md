@@ -160,11 +160,11 @@ Isotope is one of the javascript plugins used by Leeneon. Although Isotope has a
 
 ### Images
 
-The images of this repository was taken from:
+The images of this repository were taken from:
 
 - [Placeholder.com](https://placeholder.com/)
 
-The demo websites images was taken from free bank imagens and they are not included in this repository.
+The demo websites images were taken from free bank imagens and they are not included in this repository.
 
 **Photos**
 
