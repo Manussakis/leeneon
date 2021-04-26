@@ -6,7 +6,7 @@ The free accessible portfolio template.
 
 There are few accessible websites on the internet and even less accessible websites with open source. However, open source projects heavily contribute to the evolution of web development, and web accessibility can't be left out this progression.
 
-Leeneon was born to contribute to the expansion of web accessibility. It is a free accessible portfolio template, ideal for resumes and for presenting creative works such as design projects, photography, illustration and more.
+Leeneon is an open source project and it was born to contribute to the expansion of web accessibility. It is a free accessible portfolio template, ideal for resumes and for presenting creative works such as design projects, photography, illustration and more.
 
 If you desire to use Leeneon to publish your personal or commercial website, read the License section of this documentation before.
 
