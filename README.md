@@ -192,3 +192,4 @@ The demo websites images were taken from free bank imagens and they are not incl
 - [Focus Visible](https://github.com/WICG/focus-visible)
 - [Lazysizes](https://github.com/aFarkas/lazysizes)
 - [Jarallax](https://github.com/nk-o/jarallax)
+- [RxJS](https://rxjs.dev/)

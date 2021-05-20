@@ -194,3 +194,4 @@ As imagens do site de demonstração foram tiradas de banco de imagens gratuitos
 - [Focus Visible](https://github.com/WICG/focus-visible)
 - [Lazysizes](https://github.com/aFarkas/lazysizes)
 - [Jarallax](https://github.com/nk-o/jarallax)
+- [RxJS](https://rxjs.dev/)
