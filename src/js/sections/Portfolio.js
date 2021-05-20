@@ -47,7 +47,7 @@ export default class Portfolio {
         document.addEventListener('keydown', this.onEscPortfolioModal.bind(this));
         getEl('.portfolio-modal__main-inner').addEventListener('click', this.onClickPortfolioInner.bind(this));
 
-        window.onpopstate = this.onWindowPopstate.bind(this);
+        window.addEventListener('popstate', this.onWindowPopstate.bind(this));
 
         queryAll('.portfolio__grid-link').forEach(link => {
             link.addEventListener('click', this.onClickPortfolioLink.bind(this));
@@ -57,6 +57,7 @@ export default class Portfolio {
     onWindowPopstate (event) {
         if (isPortfolioModalOpen()) {
             event.preventDefault();
+            history.pushState(null, null, '#porfolio');
             this.closePortfolioModal();
         }
     }

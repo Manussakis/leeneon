@@ -7,7 +7,6 @@ import A11yPreferences from "./sections/A11yPreferences";
 import Preloader from "./sections/Preloader";
 import GreetingClass  from "./libraries/greeting-class";
 import objectFitImages from 'object-fit-images';
-import SmoothScroll from "smooth-scroll";
 import { jarallax } from "jarallax";
 import { SITE_DIRECTIONS } from "./constants";
 import { 
@@ -32,7 +31,6 @@ export default class Site {
         this.setSiteDirection();
         this.initSiteSections();
         this.initPlugins();
-        this.initSubscriptions();
         this.addListeners();
     }
 
@@ -52,7 +50,7 @@ export default class Site {
     }        
 
     initSiteSections() {
-        new SiteHeader(this.siteState);
+        new SiteHeader();
         new AboutMe();
         new Portfolio();        
         new Contact();
@@ -61,8 +59,6 @@ export default class Site {
     }
 
     initPlugins() {     
-        this.initSmoothScroll();
-        
         new GreetingClass();
 
         // Polyfill object-fit/object-position
@@ -71,36 +67,12 @@ export default class Site {
         this.initJarallax();
     }
 
-    initSubscriptions() {
-        this.siteState.getSiteAnimations$().subscribe(state => {
-            const speed = state ? 300 : 1;
-            
-            this.initSmoothScroll(speed);
-        });
-    }
-
     addListeners() {
         this.DOM.skipToContentBtn.addEventListener('click', this.onClickSkipToMainContent.bind(this));
-    }    
-
-    onPageScrollStop(event) {
-        event.detail.anchor.focus();
     }
 
     onClickSkipToMainContent(event) {
         getEl(event.currentTarget.hash).focus();
-    }
-
-    initSmoothScroll(speed) {
-        if (this.pageScroll) {
-            this.pageScroll.destroy();
-        }
-
-        this.pageScroll = new SmoothScroll('a[href*="#"]', {
-            speed: speed,
-            speedAsDuration: true,
-            easing: 'easeInOutCubic',
-        });
     }
 
     initJarallax() {

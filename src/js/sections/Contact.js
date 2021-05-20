@@ -20,7 +20,6 @@ export default class Contact {
                 },
                 isValid: false,
                 label: 'Name',
-                errorMessage: 'Name is a require field.',
             },
             email: {
                 validate: function (val) {
@@ -30,7 +29,6 @@ export default class Contact {
                 },
                 isValid: false,
                 label: 'Email',
-                errorMessage: 'Insert a valid e-mail.'
             },
             message: {
                 validate: function (val) {
@@ -38,7 +36,6 @@ export default class Contact {
                 },
                 isValid: false,
                 label: 'Message',
-                errorMessage: 'Message is a require field.',
             },
         }
 
@@ -65,7 +62,7 @@ export default class Contact {
     
             if (!this.contactFormData[fieldName].isValid) {
     
-                this.showContactFormError(input, this.contactFormData[fieldName].errorMessage);
+                this.showContactFormError(input, input.dataset.errorMessage);
     
                 this.contactFormInvalidsFieldsList.push(this.contactFormData[fieldName].label);
             }
@@ -121,7 +118,7 @@ export default class Contact {
         inputEl.setAttribute("aria-describedby", inputEl.id + "-error");
     
         if (formLiveRegionEl.innerHTML.length == 0) {
-            appendEl(formLiveRegionEl, `<p><strong>There were some issues with the form submission:</strong></p>`);
+            appendEl(formLiveRegionEl, `<p><strong>${formLiveRegionEl.dataset.errorInstruction}:</strong></p>`);
             formLiveRegionEl.classList.remove('form__message--success');
             [
                 'form__message--visible',

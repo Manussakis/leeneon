@@ -17,6 +17,7 @@ import {
     debounce,
     isWindowGreaterOrEqual,
     isSiteNavigationMobilActive,
+    isPortfolioModalOpen,
     getSiteDir,
     isAnimationOff,
     bodyScrollable,
@@ -24,15 +25,14 @@ import {
 } from '../helpers';
 
 export default class SiteHeader {
-    constructor(siteState) {
-        this.siteState = siteState;
-        
+    constructor() {    
         this.DOM = {};
         this.DOM.siteHeader = getEl('.site-header');
         this.DOM.siteNavigationToggler = getEl('#site-navigation-toggler');
         this.DOM.siteNavigationClose = getEl('#site-navigation-close');
         this.DOM.siteNavigation = getEl('#site-navigation');
         this.DOM.siteMenu = getEl('#site-menu');
+        this.DOM.hashLinks = queryAll('a[href*="#"]');
 
         this.init();
     }
@@ -46,9 +46,8 @@ export default class SiteHeader {
     initPlugins() {
         new SectionControl(this.DOM.siteMenu);
         this.headroom = new Headroom(this.DOM.siteHeader);
-
         this.headroom.init();
-    }    
+    }  
 
     addListeners() {
         this.DOM.siteNavigationToggler.addEventListener('click', this.toggleMobileNavbar.bind(this));
@@ -56,9 +55,60 @@ export default class SiteHeader {
         document.addEventListener('keydown', this.onEscSiteNavigation.bind(this));
         window.addEventListener('resize', debounce(this.manageSiteMobileNavigation.bind(this), 250));
         
-        // Events added by SmoothScroll Plugin
-        document.addEventListener('scrollStart', this.onPageScrollStart.bind(this));
-        document.addEventListener('scrollStop', this.onPageScrollStop.bind(this));
+        window.addEventListener('popstate', (event) => {
+            if (!isPortfolioModalOpen()) {
+                this.scrollToSection(window.location.hash, false);
+            } 
+        });
+
+        this.DOM.hashLinks.forEach(link => {
+            link.addEventListener('click', event => {
+                event.preventDefault();
+                const newHash = event.currentTarget.hash;
+                
+                this.scrollToSection(newHash, true);
+            });
+        });        
+    }
+
+    scrollToSection(newHash, pushState) {
+        const sectionEl = getEl(newHash);
+
+        if (sectionEl) {
+            const doc = document.documentElement;
+            const pageScrollTop = doc.scrollTop;
+            const sectionOffsetTop = sectionEl.offsetTop;
+            let offset;
+
+            if (pageScrollTop < sectionOffsetTop) {
+                offset = sectionOffsetTop;
+            } else {
+                offset = sectionOffsetTop - this.DOM.siteHeader.offsetHeight;
+            }
+
+            const scrollAnimeProps = {
+                targets: [doc, document.body],
+	            scrollTop: offset,
+	            duration: isAnimationOff() ? 1 : 300,
+                easing: 'easeInOutCubic',
+                complete: function (anim) {
+                    sectionEl.focus();
+                    
+                    if (pushState) {
+                        history.pushState(null, null, newHash);                        
+                    }
+                },
+            };
+
+            if (isSiteNavigationMobilActive()) {
+                anime
+                    .timeline({ duration: 500, })
+                    .add(this.getCloseMobileNavbarAnimeProps())
+                    .add(scrollAnimeProps, (isAnimationOff() ? 2 : 200));
+            } else {
+                anime(scrollAnimeProps);
+            }
+        }
     }
 
     onPageScrollStart() {
@@ -145,12 +195,12 @@ export default class SiteHeader {
                 opacity: opacity0to1,
                 delay: anime.stagger(stagger),
             }, duration);
-    }    
-
-    closeMobileNavbar() {
+    }
+    
+    getCloseMobileNavbarAnimeProps() {
         const that = this;
-
-        anime({
+        
+        return {
             targets: '.site-navigation',
             opacity: 0,
             easing: 'linear',
@@ -164,7 +214,11 @@ export default class SiteHeader {
             begin: function () {
                 setTrapFocus('remove', that.DOM.siteNavigation);
             }
-        });
+        };
+    }
+
+    closeMobileNavbar() {
+        anime(this.getCloseMobileNavbarAnimeProps());
     }
 
     setSiteNavigationDesktop() {

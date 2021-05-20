@@ -67,7 +67,7 @@ export default class A11yPreferencs {
                 this.animControlEl.setAttribute('aria-checked', 'false');
                 this.siteState.updateStoragedA11yPreferences(A11Y_PREFERENCES_OBJ_KEYS.animations, false);
             }
-        });        
+        });
     }
 
     addListeners() {

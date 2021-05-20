@@ -1,6 +1,6 @@
 /*
 * Template Name    : 
-* Author           : Ofcode
+* Author           : Gabriel Manussakis
 * Version          : 1.0.0
 * Created          : 
 * File Description : 
@@ -15,7 +15,6 @@
 * 4. Sections
 * 5. Site
 * 6. Helpers
-* 7. Overrides
 */
 /* -------------------------------------------------------------------------- */
 /*	1. Elements Base
@@ -93,6 +92,24 @@ svg {
   padding-left: 1rem;
   margin-right: auto;
   margin-left: auto;
+}
+
+@media (min-width: 62rem) {
+  .container {
+    max-width: 85%;
+  }
+}
+
+@media (min-width: 75rem) {
+  .container {
+    max-width: 68.125rem;
+  }
+}
+
+@media (min-width: 1260px) {
+  .container {
+    max-width: 71.25rem;
+  }
 }
 
 .sr-only {
@@ -3063,52 +3080,4 @@ body.rtl .portfolio-item__imgs-carousel-nav svg {
 
 .overflow-auto {
   overflow: auto;
-}
-
-/* -------------------------------------------------------------------------- */
-/*	7. Overrides
-/* -------------------------------------------------------------------------- */
-@media (min-width: 62rem) {
-  .container,
-  .container-lg,
-  .container-md,
-  .container-sm {
-    max-width: 85%;
-  }
-}
-
-@media (min-width: 75rem) {
-  .container,
-  .container-lg,
-  .container-md,
-  .container-sm {
-    max-width: 68.125rem;
-  }
-}
-
-@media (min-width: 1260px) {
-  .container,
-  .container-lg,
-  .container-md,
-  .container-sm {
-    max-width: 71.25rem;
-  }
-}
-
-.animation-off .portfolio-item__imgs .owl-carousel {
-  display: block !important;
-}
-
-.owl-next,
-.owl-prev {
-  -webkit-transition: -webkit-box-shadow 0.2s ease-in-out;
-  transition: -webkit-box-shadow 0.2s ease-in-out;
-  transition: box-shadow 0.2s ease-in-out;
-  transition: box-shadow 0.2s ease-in-out, -webkit-box-shadow 0.2s ease-in-out;
-}
-
-.animation-off .owl-next, .animation-off
-.owl-prev {
-  -webkit-transition-duration: 0.01s !important;
-          transition-duration: 0.01s !important;
 }
