@@ -22,6 +22,7 @@ import {
     isAnimationOff,
     bodyScrollable,
     setInertToSibligs,
+    getClosest,
 } from '../helpers';
 
 export default class SiteHeader {
@@ -52,7 +53,8 @@ export default class SiteHeader {
     addListeners() {
         this.DOM.siteNavigationToggler.addEventListener('click', this.toggleMobileNavbar.bind(this));
         this.DOM.siteNavigationClose.addEventListener('click', this.closeMobileNavbar.bind(this));
-        document.addEventListener('keydown', this.onEscSiteNavigation.bind(this));
+        document.addEventListener('keydown', this.onKeydownDocument.bind(this));
+        document.addEventListener('keyup', this.onKeyupDocument.bind(this));
         window.addEventListener('resize', debounce(this.manageSiteMobileNavigation.bind(this), 250));
         
         window.addEventListener('popstate', (event) => {
@@ -121,10 +123,23 @@ export default class SiteHeader {
         event.detail.anchor.focus();
     }
 
-    onEscSiteNavigation(event) {
+    onKeydownDocument(event) {
         if (event.keyCode === KEYCODES.ESC && isSiteNavigationMobilActive()) {
             event.preventDefault();
             this.closeMobileNavbar();
+        }
+    }
+
+    onKeyupDocument(event) {
+        if (event.keyCode === KEYCODES.TAB && !isSiteNavigationMobilActive()) {
+            this.showHeaderWhenFocused();
+        }
+    }
+
+    showHeaderWhenFocused() {
+        if (getClosest(document.activeElement, '#site-header')) {
+            console.log('oi');
+            this.headroom.pin();
         }
     }
 
