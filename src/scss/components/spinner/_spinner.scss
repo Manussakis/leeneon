@@ -1,0 +1,29 @@
+.spinner-dual-ring {
+    display: inline-block;
+    width: pxToRem(44px);
+    height: pxToRem(44px);
+
+    .animation-off & {
+        display: none;
+    }
+
+    > span {
+        display: block;
+        width: pxToRem(30px);
+        height: pxToRem(30px);
+        margin: pxToRem(7px);
+        border-radius: 50%;
+        animation: spinner-dual-ring 1.2s linear infinite;
+        border-width: pxToRem(4px);
+        border-style: solid;
+    }
+}
+
+@keyframes spinner-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

@@ -1,0 +1,32 @@
+@mixin banner-theme($theme) {
+    $primary: map-get($theme, primary);
+    $surface: map-get($theme, surface);
+    $background: map-get($theme, background);
+    $is-dark: map-get($theme, is-dark);
+
+    &.site--composition .banner__box {
+        @if $is-dark {
+            background-color: rgba($surface, .90);
+        } @else {
+            background-color: rgba($surface, .6);
+        }
+    }
+    
+    &.site--full-cover {
+        .banner__introductory {
+            @if $is-dark {
+                color: $primary;
+            } @else {
+                color: $background;
+            }
+        }
+    }
+
+    .banner__full-cover-overlay {
+        @if $is-dark {
+            background-color: rgba($background, .75);
+        } @else {
+            background-color: rgba($primary, .75);
+        }
+    }
+}

@@ -1,0 +1,47 @@
+// Useful classes that help making the template development faster.
+.list-reset {
+    list-style: none;   
+    padding: 0;
+    margin: 0;
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.bold {
+    font-weight: $font-bold;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@include display-classes((none, block, flex));
+
+@each $direction in (left, center, right) {
+    .text-#{$direction} {
+        text-align: #{$direction};
+    }
+}
+
+@each $position in (relative, absolute, fixed) {
+    .position-#{$position} {
+        position: #{$position};
+    }
+}
+
+@each $overflow in (hidden, auto) {
+    .overflow-#{$overflow} {
+        overflow: #{$overflow};
+    }
+}

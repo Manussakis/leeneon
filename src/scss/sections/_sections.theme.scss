@@ -1,0 +1,29 @@
+@import "a11y-preferences/a11y-preferences.theme";
+@import "banner/banner.theme";
+@import "about/about.theme";
+@import "hire-me/hire-me.theme";
+@import "experience/experience.theme";
+@import "services/services.theme";
+@import "portfolio/portfolio.theme";
+@import "clients/clients.theme";
+@import "blog/blog.theme";
+@import "contact/contact.theme";
+
+@mixin sections-theme($theme) {
+    @include a11y-preferences-theme($theme);
+    @include banner-theme($theme);
+    @include about-theme($theme);
+    @include hire-me-theme($theme);
+    @include experience-theme($theme);
+    @include services-theme($theme);
+    @include portfolio-theme($theme);
+    @include clients-theme($theme);
+    @include blog-theme($theme);
+    @include contact-theme($theme);
+
+    $secondary: map-get($theme, secondary);
+
+    .section__header-p {
+        color: $secondary;
+    }
+}

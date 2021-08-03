@@ -1,0 +1,21 @@
+$skil-bar-height: 7px;
+
+.skill-bar__bg {
+    width: 100%;
+    height: pxToRem($skil-bar-height);
+    border-radius: pxToRem($skil-bar-height);
+    overflow: hidden;
+    margin-bottom: pxToRem(16px);
+    @include bg-transition;
+}
+
+.skill-bar__amount {
+    height: 100%;    
+    border-radius: pxToRem($skil-bar-height);
+}
+
+.skill-bar__title {
+    margin-bottom: pxToRem(8px);
+    display: flex;
+    justify-content: space-between;
+}

@@ -1,0 +1,31 @@
+@import "a11y-preferences/a11y-preferences";
+@import "banner/banner";
+@import "about/about";
+@import "hire-me/hire-me";
+@import "experience/experience";
+@import "services/services";
+@import "portfolio/portfolio";
+@import "clients/clients";
+@import "blog/blog";
+@import "contact/contact";
+
+.section {
+    padding-top: pxToRem(60px);
+    
+    @include mq($breakpoint-md) {
+        padding-top: pxToRem(90px);
+    }
+}
+
+.section__header {
+    margin-bottom: pxToRem(30px);
+
+    @include mq($breakpoint-md) {
+        margin-bottom: pxToRem(60px);
+    }
+}
+
+.section__header-p {
+    max-width: pxToRem(280px);   
+    font-size: pxToRem(16px);
+}

@@ -1,0 +1,12 @@
+@mixin spinner-theme($theme) {
+    $primary: map-get($theme, primary);
+    $is-dark: map-get($theme, is-dark);
+
+    .spinner-dual-ring {
+        @if $is-dark {
+            > span {            
+                border-color: $primary transparent $primary transparent;
+            }
+        }
+    }    
+}

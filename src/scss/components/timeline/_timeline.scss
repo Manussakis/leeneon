@@ -1,0 +1,58 @@
+.timeline {
+    position: relative;
+    max-width: pxToRem(400px);
+    padding-#{$start-direction}: pxToRem(24px);
+    margin-top: pxToRem(32px);
+}
+
+.timeline__vertical-line {
+    position: absolute;
+    top: 0;
+    bottom: -#{pxToRem(30px)};
+    #{$start-direction}: 0;
+    width: $line-height;
+}
+
+.timeline__start-point {
+    position: absolute;
+    bottom: -#{pxToRem(30px)};
+    #{$start-direction}: -#{pxToRem(6px)};
+    width: pxToRem(14px);
+    height: pxToRem(14px);
+    border-radius: pxToRem(14px);
+    border-width: $line-height;
+    border-style: solid;
+    @include theme-transition;
+
+    @include animoff();
+}
+
+.timeline__title {
+    margin-bottom: pxToRem(40px);
+}
+
+.timeline__item {
+    margin-bottom: pxToRem(40px);
+    position: relative;
+}
+
+.timeline__item-bullet {
+    position: absolute;
+    top: pxToRem(6px);
+    #{$start-direction}: -#{pxToRem(29px)};
+    width: pxToRem(12px);
+    height: pxToRem(12px);
+    border-radius: pxToRem(12px);
+    @include theme-transition;
+
+    @include animoff();
+}
+
+.timeline__item-date {
+    display: flex;
+    align-items: center;
+}
+
+.timeline__item-p {
+    margin-top: pxToRem(20px);
+}

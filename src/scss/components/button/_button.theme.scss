@@ -1,0 +1,152 @@
+@mixin button-theme ($theme) {
+    $primary: map-get($theme, primary);
+    $background: map-get($theme, background);
+    $surface: map-get($theme, surface);
+    $is-dark: map-get($theme, is-dark);
+
+    .button--secondary {
+        background-color: $surface;
+        color: $primary;
+    
+        &:hover,
+        &:active {
+            @if $is-dark {
+                background-color: tint($surface, 5);
+            } @else {
+                background-color: shade($surface, 10);
+            }
+        }
+    }
+    
+    .button--default {        
+        @if $is-dark {
+            color: $background;
+        } @else {
+            color: $primary;
+        }
+    }
+
+    .button--spinner {
+        .button__spinner > span {
+            @if $is-dark {
+                border-color: $background transparent $background transparent;
+            } @else {
+                border-color: $primary transparent $primary transparent;
+            }
+        }
+    }
+
+    .button--theme-switcher-dark {
+        @if $is-dark {
+            display: none;
+        }
+    }
+
+    .button--theme-switcher-default {
+        @if not $is-dark {
+            display: none;
+        }
+    }    
+
+    .button--icon-default {
+        color: $primary;
+
+        svg {
+            fill: $primary;            
+
+            @include animoff();
+        }
+
+        &:hover,
+        &:active {
+            background-color: $primary;
+            color: $background;
+
+            svg {
+                fill: $background;
+            }
+        }   
+    }
+
+    .button--icon {
+        svg {
+            fill: $primary;
+        }
+        
+        background-color: rgba($background, .5);
+    }
+
+    .button--icon-color,
+    .button--icon-hover-color {        
+        &:hover,
+        &:active {            
+            @if $is-dark {
+                color: $background;
+    
+                svg {
+                    fill: $background;
+                }
+    
+            } @else {
+                color: $primary;
+                
+                svg {
+                    fill: $primary;
+                }
+            }
+        }
+    }
+    
+    .button--carousel {
+        background-color: $surface;
+    }
+
+    @include mq ($breakpoint-lg) {
+        &.site--full-cover .site-header.headroom--top {
+            .button--icon-default {
+                @if $is-dark {
+                    color: $primary;
+                    
+                    svg {
+                        fill: $primary;
+                    }
+                } @else {
+                    color: $background;
+                    
+                    svg {
+                        fill: $background;
+                    }
+                }
+
+                &:hover,
+                &:active {
+                    @if $is-dark {
+                        background-color: $primary;
+                        color: $background;
+            
+                        svg {
+                            fill: $background;
+                        }
+                    } @else {
+                        background-color: $background;
+                        color: $primary;
+            
+                        svg {
+                            fill: $primary;
+                        }
+                    }
+                }  
+            }
+        }
+
+        &.site--full-cover .site-header.headroom--top.site-header--anim .button--icon-default {
+            @if not $is-dark {
+                color: $primary;
+                
+                svg {
+                    fill: $primary;
+                }
+            }
+        }
+    }
+}

@@ -7,6 +7,7 @@ import A11yPreferences from "./sections/A11yPreferences";
 import Preloader from "./sections/Preloader";
 import GreetingClass  from "./libraries/greeting-class";
 import objectFitImages from 'object-fit-images';
+import "jarallax/dist/jarallax.css";
 import { jarallax } from "jarallax";
 import { SITE_DIRECTIONS } from "./constants";
 import { 
@@ -50,12 +51,14 @@ export default class Site {
     }        
 
     initSiteSections() {
-        new SiteHeader();
-        new AboutMe();
-        new Portfolio();        
-        new Contact();
-        new A11yPreferences(this.siteState);
-        new Preloader(this.siteState);
+        if(getEl('.page-home')) {
+            new SiteHeader();
+            new AboutMe();
+            new Portfolio();
+            new Contact();
+            new A11yPreferences(this.siteState);
+            new Preloader(this.siteState);
+        }
     }
 
     initPlugins() {     

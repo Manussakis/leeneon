@@ -95,6 +95,7 @@ export default class Contact {
             field.classList.remove('form__field--error');
             field.setAttribute("aria-invalid", null);
             field.setAttribute("aria-describedby", null);
+            field.parentElement.classList.remove("form-group--error");
         });
     
         if (formErrorMessage.length) {
@@ -109,16 +110,16 @@ export default class Contact {
     showContactFormError(inputEl, errorMessage) {
         const formLiveRegionEl = getEl('#form-live-region');
         const errorEl = `<span id="${inputEl.id}-error" class="form__error-message">${errorMessage}</span>`;
-        const errorIcon = this.getErrorIcon();
     
         inputEl.classList.add('form__field--error');
         inputEl.setAttribute("aria-invalid", "true");
         insertAfter(inputEl, errorEl);
-        insertAfter(inputEl, errorIcon);
         inputEl.setAttribute("aria-describedby", inputEl.id + "-error");
+        inputEl.parentElement.classList.add("form-group--error");
     
         if (formLiveRegionEl.innerHTML.length == 0) {
             appendEl(formLiveRegionEl, `<p><strong>${formLiveRegionEl.dataset.errorInstruction}:</strong></p>`);
+            appendEl(formLiveRegionEl, `<span class="material-icons form__live-region-icon" aria-hidden="true">error</span>`);
             formLiveRegionEl.classList.remove('form__message--success');
             [
                 'form__message--visible',
@@ -128,23 +129,6 @@ export default class Contact {
     
         appendEl(formLiveRegionEl, `<a href="#${inputEl.id}">${errorMessage}</a><br>`);
     }   
-    
-    getErrorIcon() {
-        const svgNS = "http://www.w3.org/2000/svg";
-        const svgEl = document.createElementNS(svgNS, "svg");
-        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-
-        svgEl.setAttribute('height', '24');
-        svgEl.setAttribute('width', '24');
-        svgEl.setAttribute('viewBox', '0 0 24 24');
-        svgEl.classList.add('form__error-icon');
-
-        path.setAttribute('d', 'M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z');
-
-        svgEl.appendChild(path);
-
-        return svgEl;
-    }
 
     isContactFormValid() {
         return this.contactFormInvalidsFieldsList.length === 0;
@@ -168,6 +152,7 @@ export default class Contact {
             ].forEach(className => formLiveRegionEl.classList.add(className));
 
             formLiveRegionEl.innerHTML = "<strong>" + fakeData.message + "</strong>";
+            appendEl(formLiveRegionEl, `<span class="material-icons form__live-region-icon" aria-hidden="true">check_circle</span>`);
 
             this.DOM.contactFormFieldEls.forEach(field => field.value = '');
 

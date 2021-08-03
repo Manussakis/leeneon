@@ -23,6 +23,7 @@ import {
     bodyScrollable,
     setInertToSibligs,
     getClosest,
+    getOffset,
 } from '../helpers';
 
 export default class SiteHeader {
@@ -73,13 +74,17 @@ export default class SiteHeader {
         });        
     }
 
-    scrollToSection(newHash, pushState) {
-        const sectionEl = getEl(newHash);
+    scrollToSection(newHash, pushState) {        
+        let sectionEl;
+        
+        if (newHash.length) {
+            sectionEl = getEl(newHash);
+        } 
 
         if (sectionEl) {
             const doc = document.documentElement;
             const pageScrollTop = doc.scrollTop;
-            const sectionOffsetTop = sectionEl.offsetTop;
+            const sectionOffsetTop = getOffset(sectionEl).top;
             let offset;
 
             if (pageScrollTop < sectionOffsetTop) {
@@ -138,12 +143,11 @@ export default class SiteHeader {
 
     showHeaderWhenFocused() {
         if (getClosest(document.activeElement, '#site-header')) {
-            console.log('oi');
             this.headroom.pin();
         }
     }
 
-    manageSiteMobileNavigation() {    
+    manageSiteMobileNavigation() {
         if (!isWindowGreaterOrEqual(BREAKPOINTS.lg)) {
             if (!isSiteNavigationMobilActive()) {
                 this.DOM.siteNavigation.inert = true;

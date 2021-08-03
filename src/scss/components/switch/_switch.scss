@@ -1,0 +1,70 @@
+.switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.switch__label {
+    margin-right: pxToRem(4px);
+    margin-bottom: 0;
+}
+
+.switch__button {
+    padding: 0;
+    border: 0;
+    position: relative;
+    cursor: pointer;
+    margin: 0;
+    display: inline-block;
+    border-radius: pxToRem(44px);
+    width: pxToRem(64px);
+    height: pxToRem(28px);
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: right;
+    font-size: pxToRem(14px);
+    transition: background-color $transition-duration $transition-time-function .2s,
+    box-shadow $transition-duration $transition-time-function;
+
+    @include animoff();
+}
+
+.switch__button-key {
+    width: pxToRem(20px);
+    height: pxToRem(20px);
+    border-radius: pxToRem(40px);
+    background-color: #ffffff;
+    position: absolute;
+    top: pxToRem(4px);
+    left: 0;
+    transform: translateX(pxToRem(4px));
+    transition: transform .2s ease-in-out;
+
+    @include animoff();
+}
+
+.switch__button[role="switch"][aria-checked="false"] .switch__button-text--on {
+    display: none;
+}
+
+.switch__button[role="switch"][aria-checked="true"] {
+    background-color: #176eff;
+    text-align: left;
+}
+
+.switch__button[role="switch"][aria-checked="true"] .switch__button-key {
+    transform: translateX(pxToRem(40px));
+}
+
+.switch__button[role="switch"][aria-checked="true"] .switch__button-text--off {
+    display: none;
+}
+
+.switch__button-text--on {
+    margin-left: pxToRem(12px);
+    color: white;
+}
+
+.switch__button-text--off {
+    margin-right: pxToRem(8px);
+}

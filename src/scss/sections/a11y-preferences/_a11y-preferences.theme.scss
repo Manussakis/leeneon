@@ -1,0 +1,12 @@
+@mixin a11y-preferences-theme($theme) {
+    $surface: map-get($theme, surface);
+    $background: map-get($theme, background);
+
+    .a11y-preferences__dialog {
+        background-color: $background;
+    }
+
+    .a11y-preferences__control {
+        border-bottom: 1px solid $surface;
+    }
+}

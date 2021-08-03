@@ -1,0 +1,30 @@
+@mixin navigation-theme($theme) {
+    $primary: map-get($theme, primary);
+    $background: map-get($theme, background);
+    $is-dark: map-get($theme, is-dark);
+
+    .navigation__link {
+        color: $primary;
+    }
+
+    @include mq($breakpoint-lg) {        
+
+        &.site--full-cover .site-header.headroom--top .navigation__link {
+            @if $is-dark {
+                color: $primary;
+            } @else {
+                color: $background;
+            }
+        }
+
+        &.site--full-cover .site-header.headroom--not-top .navigation__link {
+            color: $primary;
+        }
+
+        &.site--full-cover .site-header.headroom--top.site-header--anim .navigation__link {
+            @if not $is-dark {
+                color: $primary;
+            }
+        }
+    }
+}

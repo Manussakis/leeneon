@@ -1,0 +1,19 @@
+@import "button/button.theme";
+@import "form/form.theme";
+@import "line/line.theme";
+@import "navigation/navigation.theme";
+@import "skill-bar/skill-bar.theme";
+@import "spinner/spinner.theme";
+@import "switch/switch.theme";
+@import "timeline/timeline.theme";
+
+@mixin components-theme($theme) {
+    @include button-theme($theme);
+    @include form-theme($theme);
+    @include line-theme($theme);
+    @include navigation-theme($theme);
+    @include skill-bar-theme($theme);
+    @include spinner-theme($theme);
+    @include switch-theme($theme);
+    @include timeline-theme($theme);
+}

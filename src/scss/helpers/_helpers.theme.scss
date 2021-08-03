@@ -1,0 +1,7 @@
+@import "colors.theme";
+@import "bg.theme";
+
+@mixin helpers-theme($theme) {
+    @include colors-theme($theme);
+    @include bg-theme($theme);
+}

@@ -1,0 +1,29 @@
+.contact__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: $grid-column-gap;
+    row-gap: $grid-column-gap;
+
+    @include mq($breakpoint-lg){
+        grid-template-columns: 33.333333% 66.666666%;
+    }
+}
+
+.contact-info {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: pxToRem(32px);
+    margin-top: pxToRem(2px);
+}
+
+.contact-info__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: pxToRem(22px);
+    height: pxToRem(22px);
+    font-size: pxToRem(20px);
+    margin-#{$end-direction}: pxToRem(16px);
+    position: relative;
+    top: pxToRem(2px);
+}

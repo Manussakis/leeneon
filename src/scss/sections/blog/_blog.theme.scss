@@ -1,0 +1,26 @@
+@mixin blog-theme($theme) {
+    $primary: map-get($theme, primary);
+    $background: map-get($theme, background);
+    $surface: map-get($theme, surface);
+    $is-dark: map-get($theme, is-dark);
+    
+    .blog-post__surface {
+        background-color: $surface;
+    }
+
+    .blog-post__read-more {
+        @if not $is-dark {
+            color: $primary;
+        }
+    }
+
+    .blog-post__img-link:active .blog-post__img,
+    .blog-post__img:hover {
+        @if $is-dark {
+            box-shadow: 0px 8px 20px rgba($color: rgb(0, 0, 0 ), $alpha: .50);
+        } @else {
+            box-shadow: 0px 8px 20px rgba($color: $primary, $alpha: .45);
+            opacity: .9;
+        }
+    }
+}

@@ -1,0 +1,23 @@
+.page-404__section {
+    padding-top: pxToRem(60px);
+    
+    @include mq($breakpoint-md) {
+        padding-top: pxToRem(120px);
+    }
+}
+
+.page-404__text {
+    font-size: pxToRem(18px);
+
+    @include mq($breakpoint-md) {
+        font-size: pxToRem(20px);
+    }    
+}
+
+.page-404__text--bold {
+    font-weight: $font-bold;
+}
+
+.page-404__button {
+    margin-top: pxToRem(20px);
+}

@@ -1,0 +1,18 @@
+@mixin switch-theme($theme) {
+    $primary: map-get($theme, primary);
+    $hint: map-get($theme, hint);
+    $surface: map-get($theme, surface);
+    $is-dark: map-get($theme, is-dark);
+
+    .switch__button {
+        @if $is-dark {
+            background-color: $hint;
+        } @else {
+            background-color: $surface;
+        }
+    }
+
+    .switch__button-text--off {
+        color: $primary;
+    }
+}

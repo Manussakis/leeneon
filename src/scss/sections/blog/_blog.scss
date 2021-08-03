@@ -1,0 +1,98 @@
+.blog__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: $grid-column-gap;
+    row-gap: $grid-column-gap;
+
+    @include mq($breakpoint-md){
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @include mq($breakpoint-lg){
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.blog-post {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 3rem;
+}
+
+.blog-post__surface {
+    position: absolute;
+    top: pxToRem(20px);
+    #{$end-direction}: 0;
+    bottom: 3rem;
+    #{$start-direction}: pxToRem(50px);
+    @include theme-transition;
+
+    @include animoff();
+}
+
+.blog-post__header {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.blog-post__title {
+    a {
+        text-decoration: none;
+        transition: box-shadow $transition-duration $transition-time-function;
+
+        @include animoff;
+        
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+.blog-post__img-link {
+    display: block;
+    transition: box-shadow $transition-duration $transition-time-function;
+
+    @include animoff;
+}
+
+.blog-post__img {
+    box-shadow: 0;    
+    transition: box-shadow $transition-duration $transition-time-function,
+        opacity $transition-duration $transition-time-function;
+
+    @include animoff();
+}
+
+.blog-post__img,
+.blog-post__content,
+.blog-post__header {
+    width: calc(100% - #{pxToRem(50px)});
+}
+
+.blog-post__footer {
+    position: relative;
+    padding-#{$end-direction}: pxToRem(20px);
+    text-align: #{$end-direction};
+    padding-bottom: pxToRem(20px);
+}
+
+.blog-post__read-more {
+    text-decoration: underline;
+    font-weight: $font-medium;
+    transition: color $transition-duration $transition-time-function,
+        box-shadow $transition-duration $transition-time-function;
+
+    @include animoff;
+}
+
+.blog-post__date {
+    text-align: #{$end-direction};
+    margin-bottom: 0;
+}
+
+.blog-post__author-name {
+    display: inline-block;
+}

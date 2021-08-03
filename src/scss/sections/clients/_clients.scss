@@ -1,0 +1,171 @@
+$testimonials-img-height: 105px;
+
+.clients-subtitle {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.clients-testimonials {
+    margin-bottom: pxToRem(70px);
+    padding: pxToRem(15px);
+    border-radius: $border-radius;
+    list-style: none;
+    box-shadow: $transform-direction * -7px 14px 32px rgba(0, 0, 0, 0.15),
+        $transform-direction * -10px 10px 20px rgba(0, 0, 0, 0.12);
+
+    .owl-dots {
+        margin-top: pxToRem(30px) !important;
+    }
+
+    &.owl-theme .owl-dots .owl-dot {
+        &.active span {
+            width: pxToRem(30px);
+        }
+
+        span {
+            transition: opacity $transition-duration $transition-time-function,
+                width $transition-duration $transition-time-function;
+            @include animoff();                
+        }
+    }
+
+    @include mq($breakpoint-md) {
+        padding: pxToRem(15px) 0;
+    }
+
+}
+
+.clients-testimonials__item {
+    padding-top: pxToRem(40px);
+    padding-bottom: pxToRem(40px);
+}
+
+.clients-testimonials__item-inner {
+    max-width: pxToRem(630px);
+    position: relative;
+    margin: 0 auto;
+}
+
+.clients-testimonials__avatar {
+    width: pxToRem($testimonials-img-height);
+    height: pxToRem($testimonials-img-height);
+    border-radius: pxToRem($testimonials-img-height / 2);
+    padding: pxToRem(15px);
+    position: absolute;
+    top: -#{pxToRem($testimonials-img-height / 2)};
+    #{$end-direction}: 50%;
+    transform: translateX(50% * $transform-direction);
+    box-shadow: $transform-direction * 5px $transform-direction * 5px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.testimonials__img {
+    border-radius: pxToRem($testimonials-img-height);
+    box-shadow: 2px 2px 9px 1px rgba(0, 0, 0, 0.3);
+}
+
+.clients-testimonials__content {
+    position: relative;
+    margin-top: pxToRem($testimonials-img-height / 2);
+    padding-top: pxToRem(65px);
+    padding-bottom: pxToRem(15px);
+    padding-#{$start-direction}: pxToRem(8px);
+}
+
+.clients-testimonials__surface {
+    position: absolute;
+    top: 0;
+    #{$end-direction}: 0;
+    bottom: 0;
+    #{$start-direction}: pxToRem(65px);
+    @include bg-transition;
+}
+
+.clients-testimonials__p {
+    font-style: italic;
+    position: relative;
+    max-width: pxToRem(500px);
+    padding-#{$end-direction}: pxToRem(15px);
+    font-size: pxToRem(18px);
+}
+
+.clients-testimonials__line {
+    position: absolute;
+    top: -#{pxToRem(20px)};
+    #{$start-direction}: 0;
+    height: pxToRem(2px);
+    width: pxToRem(100px);
+}
+
+.clients-testimonials__footer {
+    padding-top: pxToRem(10px);
+    text-align: #{$end-direction};
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.clients-testimonials-nav {
+    position: relative;
+}
+
+.testimonials__nav-button--prev,
+.testimonials__nav-button--next {
+    position: absolute !important;
+    top: 50%;
+}
+
+.testimonials__nav-button--prev {
+    #{$start-direction}: pxToRem(20px);
+}
+
+.testimonials__nav-button--next {
+    #{$end-direction}: pxToRem(20px);
+}
+
+.clients-logos {
+    margin-top: pxToRem(50px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 20px;
+    list-style: none;
+    padding-#{$start-direction}: 0;
+
+    img {
+        display: block;
+        margin: 0 auto;
+    }
+}
+
+@include mq($breakpoint-md) {
+    $testimonials-img-height: 130px;
+
+    .clients-testimonials__line {
+        top: -#{pxToRem(29px)};
+        width: pxToRem(200px);
+    }
+
+    .clients-testimonials__avatar {
+        width: pxToRem($testimonials-img-height);
+        height: pxToRem($testimonials-img-height);
+        border-radius: pxToRem($testimonials-img-height / 2);
+        padding: pxToRem(20px);
+        top: -#{pxToRem($testimonials-img-height / 2)};
+        #{$end-direction}: 0;
+        transform: none;
+    }
+
+    .clients-testimonials__content,
+    .clients-testimonials__footer {
+        margin-#{$end-direction}: pxToRem($testimonials-img-height / 2);
+    }
+
+    .clients-logos {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@include mq($breakpoint-lg) {
+    .clients-logos {
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+}

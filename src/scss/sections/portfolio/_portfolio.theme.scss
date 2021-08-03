@@ -1,0 +1,78 @@
+@mixin portfolio-theme($theme) {
+    $primary: map-get($theme, primary);
+    $secondary: map-get($theme, secondary);
+    $background: map-get($theme, background);
+    $surface: map-get($theme, surface);
+    $is-dark: map-get($theme, is-dark);
+
+    .portfolio-modal {
+        background-color: rgba($background, 0.99);
+    }
+
+    .portfolio-item__title {
+        @if not $is-dark {
+            color: $primary;
+        }
+    }
+
+    .portfolio-item__description {
+        background-color: $surface;
+    }
+
+    .portfolio-nav {
+        background-color: $background;
+    }
+
+    .portfolio-nav__button--prev,
+    .portfolio-nav__button--next {
+        background-color: $surface;
+    }
+    
+    .portfolio__grid-title {
+        @if $is-dark {
+            color: $background;
+        } @else {
+            color: $primary;
+        }
+    }
+
+    .portfolio__grid-link-category-item {
+        color: $secondary;
+        
+        @include mq($breakpoint-md) {
+            @if $is-dark {
+                color: $background;
+            } @else {
+                color: $primary;
+            }            
+        }
+    }
+
+    .portfolio__grid-link-infos {
+        .material-icons {
+            @if $is-dark {
+                color: $background;
+            } @else {
+                color: $primary;
+            }        
+        }
+    }
+
+    .portfolio__grid-link-infos-footer {
+        svg {
+            @if $is-dark {
+                fill: $background;
+            } @else {
+                fill: $primary;
+            }
+        }
+    }
+
+    .portfolio-item__category {
+        color: $secondary;
+    }
+
+    .portfolio-item__imgs-carousel-counter {
+        color: $secondary;
+    }
+}

@@ -1,0 +1,7 @@
+@mixin hire-me-theme($theme) {
+    $surface: map-get($theme, surface);
+
+    .hire-me__surface {
+        background-color: $surface;
+    }
+}

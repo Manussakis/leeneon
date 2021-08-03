@@ -1,0 +1,27 @@
+@mixin bg-theme($theme) {    
+    $primary: map-get($theme, primary);
+    $secondary: map-get($theme, secondary);
+    $hint: map-get($theme, hint);
+    $surface: map-get($theme, surface);
+    $background: map-get($theme, background);
+
+    .bg--primary {
+        background-color: $primary !important;
+    }
+    
+    .bg--secondary {
+        background-color: $secondary !important;
+    }
+    
+    .bg--hint {
+        background-color: $hint !important;
+    }
+
+    .bg--surface {
+        background-color: $surface !important;
+    }
+
+    .bg--background {
+        background-color: $background !important;
+    }
+}

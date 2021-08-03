@@ -1,0 +1,8 @@
+@mixin page-404-theme($theme) {
+    $primary: map-get($theme, primary);
+    $secondary: map-get($theme, secondary);
+    $background: map-get($theme, background);
+    $is-dark: map-get($theme, is-dark);
+
+    
+}

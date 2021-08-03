@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: $root-font-size;
+}
+
+body {
+    font-family: "Barlow", -apple-system, BlinkMacSystemFont, "Helvetica Neue",
+        Helvetica, sans-serif;
+    letter-spacing: 0.015em;
+    line-height: 1.5;
+    direction: $direction;
+    text-align: $start-direction;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+img {
+    vertical-align: middle;
+}
+
+svg {
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+::-moz-selection {
+    /* Code for Firefox */
+    color: white;
+}
+
+::selection {
+    color: white;
+}
+
+.fade-up-start {
+    transform: translateY(30px);
+    opacity: 0;
+    transition: transform 0.5s $transition-time-function,
+        opacity 0.5s $transition-time-function;
+
+    .animation-off & {
+        transform: translateY(0);
+        opacity: 1;
+        transition: none !important;
+    }
+}
+
+.fade-up {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.js-focus-visible :focus:not(.focus-visible) {
+    outline: 0;
+}
+
+.container-fluid,
+.container {
+    width: 100%;
+    padding-#{$end-direction}: 1rem;
+    padding-#{$start-direction}: 1rem;
+    margin-#{$end-direction}: auto;
+    margin-#{$start-direction}: auto;
+}
+
+.container {
+    @include mq($breakpoint-lg) {
+        max-width: 85%;
+    }
+
+    @include mq($breakpoint-xl) {
+        max-width: pxToRem(1090px);
+    }
+
+    @include mq(1260px) {
+        max-width: pxToRem(1140px);
+    }
+}

@@ -46,5 +46,9 @@ module.exports = merge(common, {
             filename: "fullscreen.html",
             template: "./src/fullscreen.html"
         }),
+        new HtmlWebpackPlugin({
+            filename: "404.html",
+            template: "./src/404.html"
+        }),
     ],
 });

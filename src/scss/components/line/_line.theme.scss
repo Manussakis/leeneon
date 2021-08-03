@@ -1,0 +1,14 @@
+@mixin line-theme($theme) {
+    $primary: map-get($theme, primary);
+    $background: map-get($theme, background);
+    $surface: map-get($theme, surface);
+    $is-dark: map-get($theme, is-dark);
+
+    .line--underline {
+        @if $is-dark {
+            background-image: linear-gradient(120deg, $background 0%, $background 100%);
+        } @else {
+            background-image: linear-gradient(120deg, $primary 0%, $primary 100%);
+        }
+    }
+}

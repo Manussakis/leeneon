@@ -1,0 +1,15 @@
+@mixin clients-theme($theme) {
+    $hint: map-get($theme, hint);
+    $secondary: map-get($theme, secondary);
+    $surface: map-get($theme, surface);
+
+    .clients-testimonials__surface {
+        background-color: $surface;
+    }
+
+    .clients-testimonials {
+        &.owl-theme .owl-dots .owl-dot:not(.active) span {
+            background-color: $hint;
+        }
+    }
+}

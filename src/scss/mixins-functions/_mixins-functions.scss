@@ -1,0 +1,102 @@
+@mixin theme-transition() {
+    transition: color $transition-duration $transition-time-function,
+        background-color $transition-duration $transition-time-function,
+        border-color $transition-duration $transition-time-function,
+        box-shadow $transition-duration $transition-time-function;
+}
+
+@mixin bg-transition() {
+    transition: background-color $transition-duration $transition-time-function;
+}
+
+@mixin color-transition() {
+    transition: color $transition-duration $transition-time-function;
+}
+
+@mixin transition-all() {
+    transition: all $transition-duration $transition-time-function;
+}
+
+@mixin mq($size) {
+    @media only screen and (min-width: $size) {
+        @content;
+    }
+}
+
+@mixin font-mono {
+    font-family: 'Roboto Mono', monospace;
+}
+
+@mixin animoff {
+    .animation-off & {
+        transition-duration: 0.01s !important;
+    }
+}
+
+@mixin focus-visible {
+    .js-focus-visible &.focus-visible {
+        @content;
+    }
+}
+
+@mixin trbl-space-classes($spaces, $prefixes) {
+    @each $key, $space in $spaces {
+        @each $prefix, $property in $prefixes {
+            .#{$prefix}-#{$key} {
+                #{$property}: #{$space};
+            }
+        }
+    }
+}
+
+@mixin xy-space-classes($spaces, $prefixes) {
+    @each $key, $space in $spaces {
+        @each $prefix, $property in $prefixes {
+            .#{$prefix}x-#{$key} {
+                #{$property}-right: #{$space};
+                #{$property}-left: #{$space};
+            }
+        
+            .#{$prefix}y-#{$key} {
+                #{$property}-top: #{$space};
+                #{$property}-bottom: #{$space};
+            }
+        }
+    }
+}
+
+@mixin display-classes($displays) {
+    @each $shortname, $breakpoint in $breakpoints {        
+        @if ($breakpoint == 0) {
+            @each $display in $displays {
+                .d-#{$display} {
+                    display: #{$display};
+                }
+            }
+        } @else {
+            @include mq($breakpoint) {
+                @each $display in $displays {
+                    .d-#{$shortname}-#{$display} {
+                        display: #{$display};
+                    }
+                }
+            }
+        }        
+    }
+}
+
+// Color functions
+@function tint($color, $percentage) {
+    @return mix(white, $color, $percentage);
+}
+
+@function shade($color, $percentage) {
+    @return mix(black, $color, $percentage);
+}
+
+@function pxToRem($px) {
+    $result: ($px / $root-font-size);
+    
+    @return #{$result}rem; 
+}
+

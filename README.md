@@ -59,27 +59,27 @@ Run the command `npm run build` to generate production files. The `dist/` folder
 
 ### Changing the color
 
-By default Leeneon comes in purple, but you also have a choice between six others colors available in the project.
+By default Leeneon comes in purple, but you also have a choice between five others colors available in the project.
 
-To change the color open the file `src/index.js` and find the line that imports the `.css` color file:
+To change the color open the file `src/index.js` and find the line that imports the `.scss` color file:
 
 ```js
-import "./css/purple.css";
+import "./scss/purple.scss";
 ```
 
-Change `purple.css` for one of the options below:
+Change `purple.scss` for one of the options below:
 
-- blue.css
-- orange.css
-- pink.css
-- green.css
-- red.css
+- blue.scss
+- orange.scss
+- pink.scss
+- green.scss
+- red.scss
 
 Finally, save the file.
 
 ### Changing the language
 
-By default Leeneon uses the English language. To change it you should edit the value of the lang attribute in the opening `<html>` tag of the `index.html` and `fullscreen.html` files.
+By default Leeneon uses the English language. To change it you should edit the value of the lang attribute in the opening `<html>` tag of the `index.html`, `fullscreen.html` and `404.html` files.
 
 See the example below of how to switch from English to Brazilian Portuguese language
 
@@ -102,26 +102,26 @@ One of Leeneon's goals is to be a portfolio template that can be used by anyone 
 The left-to-right writing order is the default in Leeneon. To change it you should open the `src/index.js` file and go to the line that import the main css file.
 
 ```js
-import "./css/main.ltr.css";
+import "./scss/main.ltr.scss";
 ```
 
-Change `main.ltr.css` to `main.rtl.css`:
+Change `main.ltr.scss` to `main.rtl.scss`:
 
 ```js
-import "./css/main.rtl.css";
+import "./scss/main.rtl.scss";
 ```
 
 Save the file.
 
 ### Creating your own styles
 
-Leeneon is an open source template, so nothing prevents you from editing the files anyway you want. However, to avoid conflicts with the styles defined in the existing `.css` files, utilize the `custom.css` file to create your own styles. It is located in the `src/css/` folder.
+Leeneon is an open source template, so nothing prevents you from editing the files anyway you want. However, to avoid conflicts with the styles defined in the existing `.scss` files, utilize the `custom.scss` file to create your own styles. It is located in the `src/scss/` folder.
 
 ```html
 leeneon/
 |-- src/
-|---- css/
-|------ custom.css
+|---- scss/
+|------ custom.scss
 ```
 
 ## Contributions

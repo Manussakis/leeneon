@@ -1,4 +1,4 @@
-import { 
+import {
     FOCUSABLE_ELEMENTS_STRING,
     SITE_NAVIGATION_MOBILE_ACTIVE_CLASSNAME,
     PORTFOLIO_MODAL_ACTIVE_CLASSNAME,
@@ -112,7 +112,7 @@ export function selectorMatches(el, selector) {
         f = p.matches || p.webkitMatchesSelector || p.mozMatchesSelector || p.msMatchesSelector || function (s) {
             return [].indexOf.call(document.querySelectorAll(s), this) !== -1;
         };
-    
+
     return f.call(el, selector);
 }
 
@@ -188,4 +188,24 @@ export function isReducedMotionActivated() {
     const mqPreferesReducedMotion = getPrefersReducedMotion();
 
     return mqPreferesReducedMotion && mqPreferesReducedMotion.matches;
+}
+
+// Get top and Left body scroll
+export function pageScroll() {
+    const docElem = document.documentElement;
+    
+    return {
+        top: window.pageYOffset || docElem.scrollTop,
+        left: window.pageXOffset || docElem.scrollLeft
+    };
+}
+
+// Get top and Left positions relatives to body
+export function getOffset(element) {
+    const rect = element.getBoundingClientRect();
+    
+    return {
+        top: rect.top + pageScroll().top,
+        left: rect.left + pageScroll().left
+    };
 }

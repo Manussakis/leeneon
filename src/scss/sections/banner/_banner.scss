@@ -1,0 +1,157 @@
+$banner-content-offset: 30px;
+
+.banner {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: pxToRem(60px);
+    position: relative;
+}
+
+.banner__full-cover {
+    position: absolute !important; // To override jarallax style
+    top: 0;
+    #{$end-direction}: 0;
+    bottom: 0;
+    #{$start-direction}: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    img {
+        -o-object-fit: cover;
+        object-fit: cover;
+        font-family: 'object-fit: cover;';
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.banner__full-cover-overlay {
+    position: absolute;
+    top: 0;
+    #{$end-direction}: 0;
+    bottom: 0;
+    #{$start-direction}: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.banner__content {
+    position: relative;
+    z-index: 1;
+
+    @include mq($breakpoint-md) {
+        #{$start-direction}: pxToRem($banner-content-offset * 2);
+    }
+
+    @include mq($breakpoint-lg) {
+        margin-top: pxToRem($banner-content-offset * 2);
+    }
+
+    @include mq($breakpoint-xl) {
+        margin-top: pxToRem($banner-content-offset * 3);
+    }
+}
+
+.banner__img {
+    margin-#{$start-direction}: -#{pxToRem($banner-content-offset)};
+    margin-#{$end-direction}: pxToRem($banner-content-offset - 15);
+    margin-top: -#{pxToRem($banner-content-offset * .5)};
+
+    @include mq($breakpoint-lg) {
+        margin-top: 0;
+        margin-#{$end-direction}: -#{pxToRem($banner-content-offset - 15)};
+    }
+}
+
+.banner__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: $grid-column-gap;
+
+    @include mq($breakpoint-lg) {
+        grid-template-columns: 41.666667% 58.333333%;
+    }
+}
+
+.banner__grid--fullscreen {
+    @include mq($breakpoint-lg) {
+        grid-template-columns: 83.333333%;
+    }
+
+    @include mq($breakpoint-xl) {
+        grid-template-columns: 50%;
+    }
+}
+
+.banner__introductory {    
+    margin-top: pxToRem($banner-content-offset);
+    position: relative;
+    display: flex;
+    align-items: center;    
+
+    .site--composition & {
+        margin-#{$start-direction}: pxToRem($banner-content-offset + 15);
+
+        @include mq($breakpoint-md) {
+            margin-#{$start-direction}: pxToRem(2 * $banner-content-offset);
+        }
+    }
+}
+
+.banner__introductory-text {
+    max-width: 80%;
+    font-size: pxToRem(21px);
+}
+
+.banner__introductory-line {
+    flex: 1 0 auto;
+    position: relative;
+}
+
+.banner__box {
+    position: relative;
+    margin-top: pxToRem($banner-content-offset);
+    border-radius: $border-radius;
+    @include bg-transition;    
+    
+    
+    .site--composition & {
+        padding: pxToRem($banner-content-offset);
+        margin-#{$start-direction}: pxToRem($banner-content-offset - 15);
+        margin-#{$end-direction}: -#{pxToRem($banner-content-offset - 15)};
+        
+        @include mq($breakpoint-md) {
+            margin-#{$start-direction}: pxToRem($banner-content-offset);
+            margin-#{$end-direction}: 0;
+        }
+    }
+}
+
+.banner__button {
+    @include mq($breakpoint-lg) {
+        position: absolute !important;
+        bottom: pxToRem(-22px);
+        #{$start-direction}: pxToRem($banner-content-offset);
+    }
+}
+
+.site--full-cover {
+    .banner {
+        display: block;      
+    
+        .banner__button {
+            @include mq($breakpoint-md) {
+                position: relative !important;
+                bottom: initial;
+                #{$start-direction}: initial;
+            }
+        }
+    
+        .banner__box {
+            max-width: pxToRem(570px);
+        }
+    }
+}

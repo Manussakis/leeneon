@@ -1,10 +1,10 @@
 import "wicg-inert";
-import imagesLoaded from "imagesloaded";
 import Isotope from "isotope-layout";
 import anime from 'animejs/lib/anime.es.js';
 import Swiper from "swiper";
 import 'swiper/swiper-bundle.css';
-import SwiperCore, { Navigation } from 'swiper/core';
+import 'swiper/components/effect-fade/effect-fade.min.css';
+import SwiperCore, { Navigation, EffectFade } from 'swiper/core';
 import { 
     isRtl,
     getEl,
@@ -12,7 +12,7 @@ import {
     bodyChildrenInert,
     isPortfolioModalOpen,
     getSiteDir,
-    isAnimationOff,
+    isAnimationOff, 
     bodyScrollable,
     setInertToSibligs
 } from '../helpers';
@@ -23,7 +23,7 @@ import {
 } from "../constants";
 
 // configure Swiper to use modules
-SwiperCore.use([Navigation]);
+SwiperCore.use([Navigation, EffectFade]);
 
 export default class Portfolio {
     constructor() {
@@ -40,10 +40,10 @@ export default class Portfolio {
 
     init() {
         this.addListeners();
+        this.initPortfolioIsotope();
     }
 
-    addListeners() {
-        imagesLoaded('.portfolio__gallery-img', this.initPortfolioIsotope.bind(this));
+    addListeners() {        
         document.addEventListener('keydown', this.onEscPortfolioModal.bind(this));
         getEl('.portfolio-modal__main-inner').addEventListener('click', this.onClickPortfolioInner.bind(this));
 
@@ -177,9 +177,13 @@ export default class Portfolio {
         const that = this;
         
         this.portfolioSwiper = new Swiper('.portfolio-modal__carousel', {
+            effect: isAnimationOff() ? 'fade' : 'slide', 
+            fadeEffect: {
+                crossFade: isAnimationOff() ? true : false, 
+            },
             slidesPerView: 1,
             spaceBetween: 10,
-            speed: isAnimationOff() ? 10 : 250,
+            speed: isAnimationOff() ? 100 : 300,
             allowTouchMove: false,
             initialSlide: index,
             navigation: {
@@ -194,6 +198,14 @@ export default class Portfolio {
                     bodyChildrenInert(true, that.DOM.portfolioModalEl);
                     that.animePortfolioItemContent();
                     that.portfolioCarouselNavHandlers('add');
+                },
+                slideChangeTransitionStart: function(swiper) {
+                    anime({
+                        targets: '.portfolio-modal__main-inner',
+                        scrollTop: 0,
+                        duration: isAnimationOff() ? 10 : 300,
+                        easing: 'easeInOutCubic'
+                    });
                 },
                 slideChangeTransitionEnd: function (swiper) {
                     const activeSlide = swiper.slides[swiper.activeIndex];

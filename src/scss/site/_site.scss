@@ -1,0 +1,314 @@
+.site-preloader {
+    position: fixed;
+    top: 0;
+    #{$end-direction}: 0;
+    bottom: 0;
+    #{$start-direction}: 0;
+    z-index: 9;
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-is-loading {
+    overflow: hidden;
+}
+
+.site-header {
+    position: fixed;
+    top: 0;
+    #{$end-direction}: 0;
+    #{$start-direction}: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: pxToRem(10px);
+    padding-bottom: pxToRem(10px);
+    z-index: 2;
+}
+
+.site-skip-link {
+    position: absolute;
+    #{$start-direction}: -9999rem;
+    top: pxToRem(7px);
+    text-decoration: underline;
+    font-size: pxToRem(16px);
+    font-weight: 600;
+    clip: rect(1px 1px 1px 1px);
+    border-radius: pxToRem(4px);
+    padding: pxToRem(10px) pxToRem(15px);
+    z-index: 9999999;
+    border: 0;
+    font-size: pxToRem(18px);
+
+    &:focus {
+        clip: auto;
+        #{$start-direction}: pxToRem(7px);
+        outline: 0;
+    }
+}
+
+.headroom {
+    will-change: transform;
+    transition: transform $transition-duration $transition-time-function;
+
+    @include animoff;
+}
+
+.headroom--pinned {
+    transform: translateY(0%);
+}
+
+.headroom--unpinned {
+    transform: translateY(-100%);
+}
+
+.site-brand {
+    font-weight: $font-bold;
+    font-size: 1.5rem;
+    text-decoration: none;
+    border-radius: pxToRem(2px);
+    @include theme-transition;
+
+    @include animoff();
+
+    &:hover,
+    &:active,
+    &:focus {
+        text-decoration: none;
+    }
+}
+
+.site-brand-img {
+    height: pxToRem(40px);
+    max-height: pxToRem(40px);
+    width: auto;
+}
+
+.site-navigation {
+    position: fixed;
+    top: 0;
+    #{$end-direction}: 0;
+    bottom: 0;
+    #{$start-direction}: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    @include theme-transition;
+
+    @include animoff();
+
+    @include mq($breakpoint-lg) {
+        position: static;
+        top: initial;
+        #{$end-direction}: initial;
+        bottom: initial;
+        #{$start-direction}: initial;
+        width: auto;
+        height: auto;
+        background-color: transparent;
+        display: flex;
+    }
+}
+
+.site-menu-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include mq($breakpoint-lg) {
+        flex-direction: row;
+    }
+}
+
+.site-navigation--mobile-active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1;
+    overflow: auto;
+
+    @include mq($breakpoint-lg) {
+        flex-direction: row;
+    }
+}
+
+.site-header--mobile-navigation-active {
+    z-index: 3;
+}
+
+.site-navigation__theme-buttons {
+    padding-top: pxToRem(10px);
+    padding-#{$end-direction}: 0;
+    padding-bottom: pxToRem(10px);
+    padding-#{$start-direction}: 0;
+
+    @include theme-transition;
+
+    @include animoff();
+
+    @include mq($breakpoint-lg) {
+        padding-top: 0;
+        padding-#{$end-direction}: 0;
+        padding-bottom: 0;
+        padding-#{$start-direction}: pxToRem(10px);
+        border-#{$start-direction}-width: 1px;
+        border-#{$start-direction}-style: solid;
+    }
+}
+
+.site-navigation-toggler {
+    height: pxToRem(40px);
+    width: pxToRem(40px);
+    position: relative;
+    background-color: transparent;
+
+    @include mq($breakpoint-lg) {
+        display: none;
+    }
+}
+
+.site-navigation-toggler__lines {
+    position: absolute;
+    #{$start-direction}: 0;
+    #{$end-direction}: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: pxToRem(24px);
+}
+
+.site-navigation-toggler__first-line,
+.site-navigation-toggler__middle-line,
+.site-navigation-toggler__last-line {
+    width: pxToRem(22px);
+    height: pxToRem(2px);
+    position: absolute;
+    #{$start-direction}: 50%;
+}
+
+.site-navigation-toggler__first-line {
+    top: pxToRem(5px);
+    transform: translateX(-50%);
+    transition: top $transition-duration $transition-time-function,
+        transform $transition-duration $transition-time-function;
+    @include animoff();
+}
+
+.site-navigation-toggler__middle-line {
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.site-navigation-toggler__last-line {
+    bottom: pxToRem(5px);
+    transform: translateX(-50%);
+    transition: bottom $transition-duration $transition-time-function,
+        transform $transition-duration $transition-time-function;
+    @include animoff();
+}
+
+.site-navigation-toggler--close {
+    position: absolute;
+    top: 10px;
+    #{$end-direction}: 15px;
+}
+
+.site-navigation-toggler--active {
+    .site-navigation-toggler__lines {
+        .site-navigation-toggler__first-line,
+        .site-navigation-toggler__middle-line,
+        .site-navigation-toggler__last-line {
+            @include theme-transition;
+        }
+
+        .site-navigation-toggler__first-line {
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .site-navigation-toggler__middle-line {
+            display: none;
+        }
+
+        .site-navigation-toggler__last-line {
+            top: 50%;
+            bottom: 0;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+    }
+}
+
+.site-social-links {
+    margin-bottom: pxToRem(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-social-links--header {
+    @include mq($breakpoint-lg) {
+        display: none;
+    }
+}
+
+.site-social-links--footer {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    #{$end-direction}: pxToRem(15px);
+    padding-bottom: pxToRem(90px);
+    margin-bottom: 0;
+    z-index: 1;
+
+    @include mq($breakpoint-lg) {
+        display: block;
+    }
+}
+
+.site-title {
+    margin-top: pxToRem(8px);
+    margin-bottom: pxToRem(8px);
+
+    @include mq($breakpoint-md) {
+        font-size: pxToRem(48px);
+    }
+}
+
+.site-subtitle {
+    font-size: pxToRem(21px);
+    margin-bottom: pxToRem(30px);
+    max-width: pxToRem(500px);
+}
+
+.site-footer {
+    padding: pxToRem(90px) 0 pxToRem(30px) 0;
+    text-align: center;
+}
+
+.site-footer__button {
+    margin-top: 1rem;
+
+    @include mq($breakpoint-md) {
+        margin-top: 1.5rem;
+    }
+}
+
+.site-colophon {
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: pxToRem(12px);
+
+    a {
+        transition: box-shadow $transition-duration $transition-time-function;
+
+        @include animoff;
+    }
+}
+
+.site-social-links__button {
+    @include mq($breakpoint-md) {
+        margin-bottom: .25rem;
+    }
+}

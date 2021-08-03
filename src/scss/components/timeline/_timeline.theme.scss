@@ -1,0 +1,12 @@
+@mixin timeline-theme($theme) {
+    $primary: map-get($theme, primary);
+    $background: map-get($theme, background);
+
+    .timeline__item-bullet {    
+        background-color: $primary;
+    }
+
+    .timeline__start-point {
+        background-color: $background;
+    }
+}

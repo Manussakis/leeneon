@@ -1,0 +1,28 @@
+@mixin form-theme ($theme) {
+    $primary: map-get($theme, primary);
+    $background: map-get($theme, background);
+    $surface: map-get($theme, surface);
+    $is-dark: map-get($theme, is-dark);
+ 
+    .form__label {
+        color: $primary;
+    }
+
+    .form-contact__surface {     
+        background-color: $surface;
+    }
+
+    .form__message {
+        color: white;
+    }
+
+    .form__field {
+        @if $is-dark {
+            background-color: $primary;
+            color: $background;
+        } @else {
+            color: $primary;
+            background-color: $background;
+        }
+    }
+}

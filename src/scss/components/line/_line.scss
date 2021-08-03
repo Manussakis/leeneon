@@ -1,0 +1,100 @@
+.line {    
+    @include theme-transition;
+
+    @include animoff();
+}
+
+.line--horizontal {    
+    height: $line-height;    
+}
+
+.line--vertical {
+    width: $line-height;
+}
+
+.line--banner {
+    #{$end-direction}: 0;
+    #{$start-direction}: pxToRem(8px);
+    position: absolute;
+    display: block;
+    top: pxToRem(2px);
+}
+
+.line--heading {
+    width: pxToRem(100px);
+    margin: 1rem 0;
+    position: relative;
+    #{$start-direction}: -#{pxToRem(30px)};
+
+    @include mq($breakpoint-md) {
+        width: pxToRem(150px);
+        #{$start-direction}: -#{pxToRem(60px)};
+    }
+}
+ 
+.line--social-links {
+    height: pxToRem(80px);
+    bottom: 0;
+    #{$start-direction}: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+}
+
+.line--about-me {
+    width: pxToRem(200px);
+    bottom: -#{pxToRem(30px)};
+    #{$start-direction}: -#{pxToRem(15px)};
+    position: absolute;
+
+    @include mq ($breakpoint-md) {
+        #{$start-direction}: -#{pxToRem(30px)};
+    }
+}
+ 
+.line--service {
+    width: pxToRem(110px);
+    position: relative;
+    #{$start-direction}: -#{pxToRem(35px)};
+    margin: 1rem 0;
+}
+
+.line--portfolio {
+    position: absolute;
+    top: pxToRem(20px);
+    width: pxToRem(80px);
+    #{$start-direction}: -#{pxToRem(15px)};
+}
+
+.line--separator {
+    width: pxToRem(20px);
+    display: inline-block;
+    margin: 0 pxToRem(10px) 0 pxToRem(10px);
+}
+
+.line-text {
+    position: relative;
+    padding-#{$end-direction}: pxToRem(10px);
+    @include bg-transition;
+}
+
+.line--post {
+    width: pxToRem(80px);
+    margin-top: 1.5rem;
+}
+
+.line--underline {
+    background-repeat: no-repeat;
+    background-size: 0px $line-height;
+    background-position: 0px 100%;
+    padding: pxToRem(2px) pxToRem(4px);
+    transition: background-size $transition-duration $transition-time-function;
+
+    @include animoff();
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+        background-size: 100% $line-height;
+    }
+}

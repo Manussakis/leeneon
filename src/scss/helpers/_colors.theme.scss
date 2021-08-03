@@ -1,0 +1,27 @@
+@mixin colors-theme($theme) {
+    $primary: map-get($theme, primary);
+    $secondary: map-get($theme, secondary);
+    $hint: map-get($theme, hint);
+    $surface: map-get($theme, surface);
+    $background: map-get($theme, background);
+
+    .color--primary {
+        color: $primary !important;
+    }
+
+    .color--secondary {
+        color: $secondary !important;
+    }
+
+    .color--hint {
+        color: $hint !important;
+    }
+    
+    .color--surface {
+        color: $surface !important;
+    }
+    
+    .color--background {
+        color: $background !important;
+    }
+}

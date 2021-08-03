@@ -1,0 +1,136 @@
+@mixin colorful-elements($color) {
+    a,
+    button,
+    [tabindex="0"] {
+        @include focus-visible {
+            box-shadow: 0 0 0 0.3rem tint($color, 50);
+            outline: 0;
+        }
+    }
+
+    ::-moz-selection { /* Code for Firefox */
+        background: $color;
+    }
+      
+    ::selection {
+        background: $color;
+    }
+
+    .navigation__link {
+        background-image: linear-gradient(120deg, $color 0%, $color 100%);
+    }
+
+    .button--icon-hover-color {
+        &:hover,
+        &:active {
+            background-color: $color !important;
+        }
+    }
+
+    .button--icon-color {
+        color: $color;
+                        
+        svg {
+            fill: $color;
+        }
+
+        &:hover,
+        &:active {
+            background-color: $color;
+        }
+    }
+
+    .button--default {
+        background-color: $color;
+    }
+
+    .site-social-links__line {
+        background-color: $color;
+    }
+
+    .site-skip-link {
+        &:focus {
+            box-shadow: 0 0 0 0.3rem tint($color, 85);
+        }
+    }
+
+    .line {
+        background-color: $color;
+    }
+
+    .dash-list__dash {
+        background-color: $color;
+    }
+
+    .hire-me__line {
+        background-color: $color;
+    }
+
+    .timeline__vertical-line {
+        background-color: $color;
+    }
+
+    .timeline__start-point {
+        border-color: $color;
+    }
+
+    .portfolio-item__imgs-carousel-nav svg {
+        fill: $color;
+    }
+
+    .portfolio__grid-link-infos {
+        background-color: rgba($color, 0.95);
+    }
+
+    .clients-testimonials__avatar {
+        background-color: rgba($color, 0.95);
+    }
+
+    .clients-testimonials__line {
+        background-color: $color;
+    }
+
+    .clients-testimonials {
+        &.owl-theme .owl-dots .owl-dot.active span {
+            background-color: $color;
+        }
+    }
+
+    .blog-post__read-more {
+        color: $color;
+    }
+
+    .text-link {    
+        background: linear-gradient($color, $color) no-repeat left 100%/0 2px;
+    }
+
+    .spinner-dual-ring--preloader {
+        > span {            
+            border-color: $color transparent $color transparent !important;
+        }
+    }    
+
+    .skill-bar__amount {
+        background-color: $color;
+    }
+
+    .contact-info__icon {
+        .material-icons {
+            color: $color;
+        }
+    }
+
+    .service__icon {
+        .material-icons {
+            color: $color;
+        }
+    }
+
+    .form__field:focus {
+        box-shadow: 0 0 10px rgba(0,0,0,.15), 0 0 0 4px $color !important;
+    }
+
+    .page-404__title {
+        color: $color;
+    }
+}

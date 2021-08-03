@@ -1,0 +1,51 @@
+// Root
+$root-font-size: 16px;
+
+// Transition
+$transition-duration: .2s;
+$transition-time-function: ease-in-out;
+
+// Font
+$font-regular: 400;
+$font-medium: 500;
+$font-bold: 600;
+
+// Line graphic
+$line-height: 2px;
+
+// Breakpoints
+$breakpoint-xs: 0;
+$breakpoint-sm: #{576px / $root-font-size}rem;
+$breakpoint-md: #{768px / $root-font-size}rem;
+$breakpoint-lg: #{992px / $root-font-size}rem;
+$breakpoint-xl: #{1200px / $root-font-size}rem;
+
+$breakpoints: (
+    xs: $breakpoint-xs,
+    sm: $breakpoint-sm,
+    md: $breakpoint-md,
+    lg: $breakpoint-lg,
+    xl: $breakpoint-xl,
+);
+
+// Border
+$border-radius: #{2px / $root-font-size}rem;
+
+// Grid
+$grid-column-gap: 30px;
+
+$spaces: (
+    0: 0,
+    1: .25rem,
+    2: .5rem,
+    3: 1rem,
+    4: 1.5rem,
+    5: 3rem,
+);
+
+$margin-prefixes: (
+    mt: margin-top,
+    mr: margin-right,
+    mb: margin-bottom,
+    ml: margin-left
+);

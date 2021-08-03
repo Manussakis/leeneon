@@ -1,0 +1,146 @@
+.button {
+    display: inline-block;
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    border: 0;
+    font-size: 1rem;    
+    line-height: 1.5;
+    text-decoration: none;
+    cursor: pointer;
+
+    .material-icons {
+        vertical-align: middle;
+    }
+}
+
+.button--default,
+.button--secondary,
+.button--link {
+    height: pxToRem(44px);
+    border-radius: pxToRem(2px);
+    position: relative;
+}
+
+a.button,
+.button--default,
+.button--secondary,
+.button--link,
+.button--icon {
+    @include theme-transition;
+
+    @include animoff();
+}
+
+.button--link {
+    background-color: transparent;
+}
+
+a.button {    
+    line-height: pxToRem(44px);
+    
+    &:hover,
+    &:active {
+        text-decoration: none;
+    }
+}
+
+.button--default,
+.button--secondary {
+    padding: 0 pxToRem(20px);
+    
+}
+
+.button--default {
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+        .line--underline {
+            background-size: 100% $line-height;
+        }
+    }
+}
+
+.button--default {
+    .button__spinner {
+        display: none;
+    }
+}
+
+.button--spinner {
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .button__text {
+        display: none !important;
+    }
+
+    .button__spinner {
+        display: inline-block !important;
+    }
+}
+
+.button__spinner {
+    display: none;
+}
+
+.button__text {
+    vertical-align: middle;
+}
+
+.button--icon {
+    width: pxToRem(44px);   
+    height: pxToRem(44px);
+    border-radius: pxToRem(22px) !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+        width: 24px;   
+        height: 24px;   
+    }
+}
+
+.button--icon-hover-color {
+    svg {
+        transition: fill $transition-duration $transition-time-function;
+
+        @include animoff();
+    }
+}
+
+.button--icon-default,
+.button--icon-color {
+    background-color: transparent;
+    @include theme-transition;
+
+    @include animoff();
+
+    svg {
+        transition: fill $transition-duration $transition-time-function;
+
+        @include animoff();
+    }
+}
+
+.button--disabled {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.4 !important;
+    transition: opacity $transition-duration $transition-time-function;
+
+    @include animoff();
+}
+
+.button--carousel {
+    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.2);
+    
+    body.rtl & .material-icons {
+        transform: rotate(180deg);
+    }
+}

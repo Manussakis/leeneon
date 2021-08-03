@@ -1,0 +1,195 @@
+@import "variables/global-variables";
+@import "variables/color-variables";
+@import "mixins-functions/mixins-functions";
+
+$active: #17aeff;
+
+.demo-engine {
+    display: flex;
+    align-items: flex-start;
+    position: fixed;
+    top: 20%;
+    right: 0;
+    transform: translateX(pxToRem(200px));
+    z-index: 2;
+    direction: ltr;
+    transition: transform .2s ease-in-out;
+
+    @include animoff();
+}
+
+.demo-engine__tab {
+    background-color: white;
+    border-top-left-radius: pxToRem(4px);
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: pxToRem(4px);
+    padding: pxToRem(10px);
+    z-index: 1;
+    box-shadow: -2px 5px 10px rgba(0, 0, 0, 0.2);
+    transition: box-shadow $transition-duration $transition-time-function;
+
+    @include animoff;
+
+    svg {
+        fill: $primary;
+        animation: spin;
+        animation-name: spin;
+        animation-duration: 4000ms;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+
+        .animation-off & {
+            animation: none;
+        }
+    }
+}
+
+.demo-engine__overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: red;
+    display: none;
+}
+
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+
+.demo-engine.open {
+    transform: translateX(0);
+
+    .demo-engine__content {
+        box-shadow: -5px 7px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .demo-engine__overlay {
+        display: block;
+    }
+}
+
+.demo-engine__content {
+    width: pxToRem(198px);
+    padding: pxToRem(15px) pxToRem(25px) pxToRem(25px) pxToRem(25px);
+    background-color: white;
+    border-bottom-left-radius: pxToRem(4px);
+}
+
+.demo-engine__title {
+    color: $primary;
+    margin: 0 pxToRem(10px) 1rem 0;
+    text-align: left;
+}
+
+.demo-engine__colors {
+    margin-bottom: 1.5rem;
+}
+
+.demo-engine__colors-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    list-style: none;
+    padding-left: 0;
+
+    li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.demo-engine__color-btn {
+    width: pxToRem(38px);
+    height: pxToRem(38px);
+    border-radius: pxToRem(38px);
+    background-color: red;
+    margin-bottom: pxToRem(10px);
+    transition: box-shadow $transition-duration $transition-time-function;
+    
+    @include animoff;
+
+    &:hover,    
+    &--active {
+        box-shadow: 0 0 0 3px $primary-80;
+    }
+
+    &:focus {
+        box-shadow: 0 0 0 3px $primary-80, 0 0 0 5px $primary-40;
+    }
+}
+
+.demo-engine__color-btn[data-color="blue"] {
+    background-color: $blue !important;
+}
+
+.demo-engine__color-btn[data-color="green"] {
+    background-color: $green !important;
+}
+
+.demo-engine__color-btn[data-color="orange"] {
+    background-color: $orange !important;
+}
+
+.demo-engine__color-btn[data-color="pink"] {
+    background-color: $pink !important;
+}
+
+.demo-engine__color-btn[data-color="purple"] {
+    background-color: $purple !important;
+}
+
+.demo-engine__color-btn[data-color="red"] {
+    background-color: $red !important;
+}
+
+.demo-engine__directions-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.demo-engine__directions-item {
+    width: 49%;
+
+    a {
+        display: block;
+        padding: pxToRem(10px);
+        text-align: center;
+        border-radius: pxToRem(4px);
+        background-color: #ededed;
+        text-decoration: none;
+        color: $primary;
+        font-weight: 700;
+        text-transform: uppercase;
+        transition: background-color $transition-duration $transition-time-function,
+            color $transition-duration $transition-time-function,
+            box-shadow $transition-duration $transition-time-function;
+
+        @include animoff();
+        
+        &:hover {
+            color: $primary;
+            background-color: #dddddd;
+        }
+    }
+
+    a.active {
+        background-color: $primary;
+        color: white;
+    }
+}

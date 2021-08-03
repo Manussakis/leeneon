@@ -1,0 +1,34 @@
+.services__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: $grid-column-gap;
+    row-gap: $grid-column-gap;
+
+    @include mq($breakpoint-md){
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @include mq($breakpoint-lg){
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+.service__box {
+    padding: pxToRem(20px);
+    height: 100%;
+    border-radius: $border-radius;
+}
+
+.service__icon {
+    .material-icons {
+        font-size: pxToRem(40px);
+        
+        @include mq($breakpoint-md){
+            font-size: pxToRem(45px);
+        }
+    }
+}
+
+.service__p {
+    margin-bottom: 0; 
+}

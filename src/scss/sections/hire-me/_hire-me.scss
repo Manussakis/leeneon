@@ -1,0 +1,58 @@
+.hire-me {
+    padding: pxToRem(30px) 0;
+    margin-top: pxToRem(60px);
+    position: relative;
+    padding-#{$start-direction}: 10%;
+
+    @include mq($breakpoint-md) {
+        padding-#{$start-direction}: 20%;
+        margin-top: pxToRem(150px);
+    }
+
+    @include mq($breakpoint-lg) {
+        padding-#{$start-direction}: 30%;
+        margin-bottom: pxToRem(50px);
+    }
+}
+
+.hire-me__surface {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    #{$start-direction}: 0;
+    width: 14%;
+    @include bg-transition;
+
+    @include mq($breakpoint-md) {
+        width: 25%;
+    }
+
+    @include mq($breakpoint-lg) {
+        width: 34%;
+    }
+}
+
+.hire-me__line {
+    position: absolute;
+    bottom: pxToRem(49px);
+    #{$end-direction}: 0;
+    width: calc(90% - #{pxToRem(110px)});
+    height: $line-height;
+    @include bg-transition;
+    
+    @include mq($breakpoint-md) {
+        width: calc(80% - #{pxToRem(110px)});
+    }
+
+    @include mq($breakpoint-lg) {
+        width: calc(70% - #{pxToRem(110px)});
+    }
+}
+
+.hire-me__content {
+    position: relative;
+}
+
+.hire-me__button {
+    margin-top: 1rem;
+}

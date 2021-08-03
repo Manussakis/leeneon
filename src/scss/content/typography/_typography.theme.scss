@@ -1,0 +1,36 @@
+@mixin typography-theme($theme) {
+    $primary: map-get($theme, primary);
+    $secondary: map-get($theme, secondary);
+    $background: map-get($theme, background);
+    $is-dark: map-get($theme, is-dark);
+
+    h5,
+    .heading-5 {
+        color: $secondary;
+    }
+
+    .dash-list {
+        color: $secondary;
+    }
+
+    .text-link {    
+        &:hover,
+        &:focus {
+            @if $is-dark {
+                color: $primary;
+            }
+        }    
+    }
+
+    .singlekey {
+        @if $is-dark {
+            background-color: $primary;
+            color: $background;            
+            border: 1px solid $background;
+            box-shadow: -2px 2px 0px 0px $background;
+        } @else {
+            border: 1px solid $primary;
+            box-shadow: -2px 2px 0px 0px $primary;
+        }
+    }
+}

@@ -1,0 +1,139 @@
+h1,
+.heading-1 {
+    font-size: pxToRem(32px);
+
+    @include mq($breakpoint-md) {
+        font-size: pxToRem(44px);
+    }
+
+    @include mq($breakpoint-lg) {
+        font-size: pxToRem(48px);
+    }
+}
+
+h2,
+.heading-2 {
+    font-size: pxToRem(24px);
+    margin-bottom: pxToRem(16px);
+
+    @include mq($breakpoint-sm) {
+        font-size: pxToRem(28px);
+    }
+
+    @include mq($breakpoint-md) {
+        font-size: pxToRem(34px);
+    }
+}
+
+h3,
+.heading-3 {
+    font-size: pxToRem(20px);
+    margin-bottom: pxToRem(16px);
+
+    @include mq($breakpoint-md) {
+        font-size: pxToRem(22px);
+    }
+}
+
+h4,
+.heading-4 {
+    font-size: pxToRem(18px);
+    margin-bottom: pxToRem(16px);
+}
+
+h5,
+.heading-5 {
+    font-size: pxToRem(12px);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+
+    @include mq($breakpoint-md) {
+        font-size: pxToRem(12px);
+    }
+}
+
+h1,
+.heading-1,
+h2,
+.heading-2,
+h3,
+.heading-3,
+h4,
+.heading-4,
+h5,
+.heading-5,
+h6,
+.heading-6 {
+    font-weight: 600;
+    line-height: 1.2;
+    margin-top: 0;
+}
+
+p {
+    margin-top: 0;
+}
+
+strong {
+    font-weight: 600;
+}
+
+a {
+    text-decoration: underline;
+    color: inherit;
+
+    &:not(.button) {
+        border-radius: pxToRem(2px);
+    }
+
+    &:hover,
+    &:active {
+        color: inherit;
+    }
+}
+
+blockquote {
+    margin: 0 0 1rem;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+
+.dash-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    @include font-mono;
+    font-size: pxToRem(14px);
+}
+
+.dash-list__item {
+    margin-bottom: pxToRem(16px);
+    position: relative;
+    padding-#{$start-direction}: pxToRem(30px);
+}
+
+.dash-list__dash {
+    position: absolute;
+    height: $line-height;
+    width: pxToRem(20px);
+    #{$start-direction}: 0;
+    top: pxToRem(10px);
+}
+
+.dash-list__item--inline {
+    display: inline-block;
+}
+
+.singlekey {
+    padding: 0px pxToRem(2px);
+    border-radius: pxToRem(3px);    
+    text-transform: uppercase;
+    font-size: pxToRem(13px);
+    font-weight: 600;
+    margin: 0 pxToRem(2px);
+    display: inline-block;
+
+    @include theme-transition();
+}

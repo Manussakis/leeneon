@@ -1,0 +1,9 @@
+.experience__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: $grid-column-gap;
+
+    @include mq($breakpoint-md) {
+        grid-template-columns: 1fr 1fr;
+    }
+}

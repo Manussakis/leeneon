@@ -16,7 +16,6 @@ export default class Preloader {
         
         this.DOM = {};
         this.DOM.preloader = getEl('.site-preloader');
-        this.DOM.preloaderInner = getEl('.site-preloader__inner');
 
         this.init();
     }
@@ -35,7 +34,6 @@ export default class Preloader {
 
     runSiteLoadAnimation() {
         const that = this;
-        this.DOM.preloaderInner.classList.add('active');
 
         const transformDirection = SITE_DIRECTIONS[getSiteDir()].transform;
         const siteLoadingTimeline = anime.timeline();
@@ -49,6 +47,7 @@ export default class Preloader {
             easing: 'linear',
             complete: function () {
                 that.DOM.preloader.style.display = 'none';
+                document.body.classList.remove('site-is-loading');
             },
         };
         const siteBrandAnimation = {
@@ -57,8 +56,8 @@ export default class Preloader {
             easing: 'linear',
             duration: animationOff ? 1 : 1500,
         }
-        const homeContentAnimation = {
-            targets: '#home, .site-main, .site-footer__inner',
+        const bannerContentAnimation = {
+            targets: '#banner, .site-main, .site-footer__inner',
             opacity: opacity0to1,
             easing: 'linear',
             duration: animationOff ? 1 : 1200,
@@ -69,7 +68,7 @@ export default class Preloader {
                     siteHeader.classList.remove('site-header--anim');
                 }
             }
-        };
+        };        
 
         if (!isWindowGreaterOrEqual(BREAKPOINTS.lg)) {
             const offset = animationOff ? 0 : '-=750';
@@ -82,7 +81,7 @@ export default class Preloader {
                     translateY: animationOff ? 0 : [-20, 0],
                     opacity: opacity0to1,
                 }, offset)
-                .add(homeContentAnimation, offset);
+                .add(bannerContentAnimation, offset);
         } else {
             const stagger = animationOff ? 0 : 50;
             const offset = animationOff ? 0 : '-=750';
@@ -108,7 +107,7 @@ export default class Preloader {
                     opacity: opacity0to1,
                     easing: 'easeOutQuad',
                 }, offset)
-                .add(homeContentAnimation, offset);
+                .add(bannerContentAnimation, offset);
         }
     }
 }

@@ -1,0 +1,111 @@
+.form-contact { 
+    position: relative;
+    padding: pxToRem(15px) pxToRem(20px);
+}
+
+.form-contact__two-columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: $grid-column-gap;
+    
+    @include mq($breakpoint-md) {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.form-contact__surface {
+    position: absolute;
+    top: 0;
+    #{$end-direction}: pxToRem(50px);
+    bottom: 0;
+    #{$start-direction}: 0px;
+    @include theme-transition;
+
+    @include animoff();
+
+    @include mq($breakpoint-md) {
+        #{$start-direction}: -#{pxToRem(15px)};
+    }
+}
+
+.form-group {
+    margin-bottom: 1rem;
+    position: relative;
+
+    .material-icons {
+        display: none;
+    }
+
+    &.form-group--error,
+    .form__message--error,
+    .form__message--success {
+        .material-icons {
+            display: block;
+        }        
+    }
+}
+
+.form__field {
+    display: block;
+    width: 100%;
+    height: pxToRem(55px);
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    background-clip: padding-box;
+    border-radius: pxToRem(2px);
+    border: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,.15);
+    transition: box-shadow $transition-duration $transition-time-function;
+
+    @include animoff();
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+textarea.form__field {
+    height: auto;
+}
+
+.form__field--error {
+    box-shadow: 0 0 0 2px $alert;
+}
+
+.form__button-wrapper {
+    margin-bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form__message {
+    display: none;
+    padding: pxToRem(16px);
+    border-radius: pxToRem(4px);
+    position: relative;
+}
+
+.form__message--error {    
+    background-color: $alert;
+}
+
+.form__message--success {    
+    background-color: $success;
+}
+
+.form__message--visible {
+    display: block;
+}
+
+.form__field-icon {
+    position: absolute;
+    top: pxToRem(38px);
+    #{$end-direction}: pxToRem(6px);
+    color: $alert;
+}
+
+.form__live-region-icon {
+    position: absolute;
+    top: pxToRem(6px);
+    #{$end-direction}: pxToRem(6px);    
+}

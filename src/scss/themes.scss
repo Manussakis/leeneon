@@ -1,0 +1,62 @@
+@import 'variables/global-variables';
+@import 'mixins-functions/mixins-functions';
+@import 'variables/color-variables';
+
+@import 'site/site.theme';
+@import 'sections/sections.theme';
+@import 'components/components.theme';
+@import 'content/content.theme';
+@import 'helpers/helpers.theme';
+@import 'pages/pages.theme';
+
+$default-theme: (
+    primary: $primary,
+    secondary: $primary-60,
+    hint: $primary-40,
+    surface: $primary-20,
+    background: $primary-0,
+    is-dark: false,
+);
+
+$dark-theme: (
+    primary: $primary-20,
+    secondary: $primary-40,
+    hint: $primary-60,
+    surface: $primary-80,
+    background: $primary,
+    is-dark: true,
+);
+
+body {
+    @include theme-transition;
+}
+
+/* -------------------------------------------------------------------------- */
+/*	DEFAULT THEME
+/* -------------------------------------------------------------------------- */
+body.default-theme {
+    background-color: map-get($default-theme, background);
+    color: map-get($default-theme, primary);
+
+    @include site-theme($default-theme);
+    @include sections-theme($default-theme);
+    @include components-theme($default-theme);
+    @include content-theme($default-theme);
+    @include helpers-theme($default-theme);
+    @include pages-theme($default-theme);
+}
+
+/* -------------------------------------------------------------------------- */
+/*	DARK THEME
+/* -------------------------------------------------------------------------- */
+body.dark-theme {
+    background-color: map-get($dark-theme, background);
+    color: map-get($dark-theme, primary);
+
+    @include site-theme($dark-theme);
+    @include sections-theme($dark-theme);
+    @include components-theme($dark-theme);
+    @include content-theme($dark-theme);
+    @include helpers-theme($dark-theme);
+    @include pages-theme($dark-theme);
+}

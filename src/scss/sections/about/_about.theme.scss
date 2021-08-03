@@ -1,0 +1,7 @@
+@mixin about-theme($theme) {
+    $surface: map-get($theme, surface);
+
+    .about__img-bg {
+        background-color: $surface;
+    }
+}
