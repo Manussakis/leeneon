@@ -11,6 +11,7 @@ export default class Contact {
         this.DOM.contactForm = getEl('#contact-form');
         this.DOM.contactFormFieldEls = queryAll('#contact-form .form__field');
         this.DOM.contactFormSubmitButton = getEl('#contact-form__submit-button');
+        this.DOM.formLiveRegionEl = getEl('#form-live-region');
 
         this.contactFormInvalidsFieldsList = [];
         this.contactFormData = {
@@ -43,7 +44,7 @@ export default class Contact {
     }
 
     init() {
-        this.addListeners();        
+        this.addListeners();
     }
 
     addListeners() {
@@ -118,20 +119,38 @@ export default class Contact {
         inputEl.parentElement.classList.add("form-group--error");
     
         if (formLiveRegionEl.innerHTML.length == 0) {
-            appendEl(formLiveRegionEl, `<p><strong>${formLiveRegionEl.dataset.errorInstruction}:</strong></p>`);
-            appendEl(formLiveRegionEl, `<span class="material-icons form__live-region-icon" aria-hidden="true">error</span>`);
-            formLiveRegionEl.classList.remove('form__message--success');
-            [
-                'form__message--visible',
-                'form__message--error',
-            ].forEach(className => formLiveRegionEl.classList.add(className));
+            this.showContactFormNotification('error', `${formLiveRegionEl.dataset.errorInstruction}:`);
         }
     
-        appendEl(formLiveRegionEl, `<a href="#${inputEl.id}">${errorMessage}</a><br>`);
-    }   
+        appendEl(formLiveRegionEl, `<a class="form__message-link" href="#${inputEl.id}">${errorMessage}</a>`);
+    }
 
     isContactFormValid() {
         return this.contactFormInvalidsFieldsList.length === 0;
+    }
+
+    showContactFormNotification(type, notificationMessage) {
+        if (type !== 'error' && type !== 'success') {
+            throw new Error("The accepted type values are 'error' and 'success'.");
+        }
+
+        let notificationClass;
+        let notificationIcon;
+        
+        if (type === 'error') {
+            notificationClass = 'form__message--error';
+            notificationIcon = `<span class="material-icons form__live-region-icon" aria-hidden="true">error</span>`;
+        } else {
+            notificationClass = 'form__message--success';
+            notificationIcon = `<span class="material-icons form__live-region-icon" aria-hidden="true">check_circle</span>`;
+        }
+
+        appendEl(this.DOM.formLiveRegionEl, `<p class="form__message-title"><strong>${notificationMessage}</strong></p>`);
+        appendEl(this.DOM.formLiveRegionEl, notificationIcon);
+        this.DOM.formLiveRegionEl.classList.remove('form__message--error');
+        this.DOM.formLiveRegionEl.classList.remove('form__message--success');
+        this.DOM.formLiveRegionEl.classList.add('form__message--visible');
+        this.DOM.formLiveRegionEl.classList.add(notificationClass);
     }
 
     // This function only simulate an AJAX request receiving a fake data as an answer.
@@ -140,22 +159,8 @@ export default class Contact {
         this.DOM.contactFormSubmitButton.classList.add('button--spinner');
 
         setTimeout(() => {
-            const fakeData = {
-                status: "success",
-                message: "Message has been sent :)",
-            };
-            const formLiveRegionEl = getEl('#form-live-region');
-
-            [
-                'form__message--visible',
-                'form__message--success'
-            ].forEach(className => formLiveRegionEl.classList.add(className));
-
-            formLiveRegionEl.innerHTML = "<strong>" + fakeData.message + "</strong>";
-            appendEl(formLiveRegionEl, `<span class="material-icons form__live-region-icon" aria-hidden="true">check_circle</span>`);
-
+            this.showContactFormNotification('success', 'Message has been sent :)')
             this.DOM.contactFormFieldEls.forEach(field => field.value = '');
-
             this.DOM.contactFormSubmitButton.classList.remove('button--spinner');
         }, 2000);
     }

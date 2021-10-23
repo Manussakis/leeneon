@@ -83,6 +83,18 @@ textarea.form__field {
     padding: pxToRem(16px);
     border-radius: pxToRem(4px);
     position: relative;
+
+    .form__message-link:first-of-type {
+        margin-top: pxToRem(16px);
+    }
+}
+
+.form__message-title {
+    margin-bottom: 0;
+}
+
+.form__message-link {    
+    display: block;
 }
 
 .form__message--error {    
