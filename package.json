@@ -5,7 +5,8 @@
   "main": "./src/index.js",
   "scripts": {
     "start": "npx webpack serve --config webpack.dev.js",
-    "build": "npx webpack --config webpack.prod.js"
+    "build": "npx webpack --config webpack.prod.js",
+    "deploy": "gh-pages -d src"
   },
   "repository": {
     "type": "git",
